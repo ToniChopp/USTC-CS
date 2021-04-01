@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.2.2 (64-bit)
+# SW Build 2348494 on Mon Oct  1 18:25:44 MDT 2018
+# IP Build 2318053 on Mon Oct  1 21:44:26 MDT 2018
+# Start of session at: Thu May 30 20:54:11 2019
+# Process ID: 11176
+# Current directory: E:/vivado/cod/pipeline/pipeline.runs/synth_1
+# Command line: vivado.exe -log pipeline.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pipeline.tcl
+# Log file: E:/vivado/cod/pipeline/pipeline.runs/synth_1/pipeline.vds
+# Journal file: E:/vivado/cod/pipeline/pipeline.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source pipeline.tcl -notrace

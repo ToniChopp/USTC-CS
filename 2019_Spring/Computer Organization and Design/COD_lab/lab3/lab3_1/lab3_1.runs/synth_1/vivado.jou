@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Apr 11 21:20:59 2019
+# Process ID: 13664
+# Current directory: D:/COD/lab3_1/lab3_1.runs/synth_1
+# Command line: vivado.exe -log Register_file.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Register_file.tcl
+# Log file: D:/COD/lab3_1/lab3_1.runs/synth_1/Register_file.vds
+# Journal file: D:/COD/lab3_1/lab3_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source Register_file.tcl -notrace

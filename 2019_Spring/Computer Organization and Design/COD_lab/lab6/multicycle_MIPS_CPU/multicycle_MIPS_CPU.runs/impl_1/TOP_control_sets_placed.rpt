@@ -1,0 +1,120 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+| Date         : Fri May 31 19:37:14 2019
+| Host         : LAPTOP-8P9O5NTA running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file TOP_control_sets_placed.rpt
+| Design       : TOP
+| Device       : xc7a100t
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    52 |
+| Unused register locations in slices containing registers |    70 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      2 |            7 |
+|      4 |            1 |
+|      6 |            1 |
+|     10 |            1 |
+|    16+ |           42 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             444 |           88 |
+| No           | No                    | Yes                    |             130 |           17 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |              68 |           15 |
+| Yes          | No                    | Yes                    |              80 |           13 |
+| Yes          | Yes                   | No                     |            2048 |          595 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++---------------------------------+-------------------------------------------------------------------------------------+-----------------------------+------------------+----------------+
+|           Clock Signal          |                                    Enable Signal                                    |       Set/Reset Signal      | Slice Load Count | Bel Load Count |
++---------------------------------+-------------------------------------------------------------------------------------+-----------------------------+------------------+----------------+
+|  U1/A0/PCWriteCond1_reg_i_1_n_2 |                                                                                     |                             |                1 |              2 |
+|  U1/A0/IorD_reg_i_2_n_2         |                                                                                     |                             |                1 |              2 |
+|  U1/A0/PCWriteCond2_reg_i_1_n_2 |                                                                                     |                             |                1 |              2 |
+|  U1/A0/IRWrite_reg_i_1_n_2      |                                                                                     |                             |                1 |              2 |
+|  U1/A0/PCWrite_reg_i_2_n_2      |                                                                                     |                             |                1 |              2 |
+|  U1/A0/MemWrite_reg_i_1_n_2     |                                                                                     |                             |                1 |              2 |
+|  U1/A0/RegWrite_reg_i_1_n_2     |                                                                                     |                             |                1 |              2 |
+|  U1/A0/PCSource_reg[1]_i_1_n_2  |                                                                                     |                             |                1 |              4 |
+|  U1/A0/MemtoReg_reg_i_1_n_2     |                                                                                     |                             |                1 |              6 |
+|  U1/A0/ALUSrcB_reg[1]_i_2_n_2   |                                                                                     |                             |                2 |             10 |
+|  U1/A0/nextstate__0             |                                                                                     |                             |                4 |             26 |
+|  clk_out_BUFG                   |                                                                                     | rst_IBUF                    |                2 |             26 |
+|  n_0_1707_BUFG                  |                                                                                     |                             |               16 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[4][31]                                                            | U1/A3/regFile_reg[4][0]     |               18 |             64 |
+|  n_1_1407_BUFG                  |                                                                                     |                             |               12 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[12][31]                                                           | U1/A3/regFile_reg[12][0]    |               22 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[0][31]                                                            | U1/A3/regFile_reg[0][0]     |               17 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[10][31]                                                           | U1/A3/regFile_reg[10][0]    |               22 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[13][31]                                                           | U1/A3/regFile_reg[13][0]    |               25 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[11][31]                                                           | U1/A3/regFile_reg[11][0]    |               17 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[18][31]                                                           | U1/A3/regFile_reg[18][0]    |               14 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[22][31]                                                           | U1/A3/regFile_reg[22][0]    |               18 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[14][31]                                                           | U1/A3/regFile_reg[14][0]    |               12 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[21][31]                                                           | U1/A3/regFile_reg[21][0]    |               14 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[19][31]                                                           | U1/A3/regFile_reg[19][0]    |               14 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[15][31]                                                           | U1/A3/regFile_reg[15][0]    |               19 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[23][31]_0                                                         | U1/A3/regFile_reg[23][31]   |               19 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[16][31]                                                           | U1/A3/regFile_reg[16][0]    |               16 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[1][31]                                                            | U1/A3/regFile_reg[1][0]     |               19 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[17][31]                                                           | U1/A3/regFile_reg[17][0]    |               18 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[20][31]_0                                                         | U1/A3/regFile_reg[20][31]   |               19 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[24][31]                                                           | U1/A3/regFile_reg[24][0]    |               16 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[2][31]                                                            | U1/A3/regFile_reg[2][0]     |               21 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[30][31]                                                           | U1/A3/regFile_reg[30][0]    |               26 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[29][31]                                                           | U1/A3/regFile_reg[29][0]    |               17 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[27][31]                                                           | U1/A3/regFile_reg[27][0]    |               18 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[25][31]_1                                                         | U1/A3/regFile_reg[25][31]_0 |               17 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[26][31]                                                           | U1/A3/regFile_reg[26][0]    |               19 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[28][31]                                                           | U1/A3/regFile_reg[28][0]    |               15 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[3][31]                                                            | U1/A3/regFile_reg[3][0]     |               13 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[7][31]                                                            | U1/A3/regFile_reg[7][0]     |               22 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[9][31]                                                            | U1/A3/regFile_reg[9][0]     |               28 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[31][31]                                                           | U1/A3/regFile_reg[31][0]    |               24 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[6][31]                                                            | U1/A3/regFile_reg[6][0]     |               18 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[8][31]                                                            | U1/A3/regFile_reg[8][0]     |               23 |             64 |
+|  clk_out_BUFG                   | U1/A3/regFile_reg[5][31]                                                            | U1/A3/regFile_reg[5][0]     |               15 |             64 |
+|  clk_out_BUFG                   | U1/A0/E[0]                                                                          |                             |               15 |             68 |
+|  clk_out_BUFG                   | U1/A0/pc_reg[31][0]                                                                 | rst_IBUF                    |               13 |             80 |
+|  clk_IBUF_BUFG                  |                                                                                     | rst_IBUF                    |               15 |            104 |
+|  clk_out_BUFG                   |                                                                                     |                             |               45 |            256 |
+|  clk_out_BUFG                   | U3/U0/synth_options.dist_mem_inst/gen_dp_ram.dpram_inst/ram_reg_0_127_0_0_i_1_n_0   |                             |               32 |            256 |
+|  clk_out_BUFG                   | U3/U0/synth_options.dist_mem_inst/gen_dp_ram.dpram_inst/ram_reg_128_255_0_0_i_1_n_0 |                             |               32 |            256 |
++---------------------------------+-------------------------------------------------------------------------------------+-----------------------------+------------------+----------------+
+
+

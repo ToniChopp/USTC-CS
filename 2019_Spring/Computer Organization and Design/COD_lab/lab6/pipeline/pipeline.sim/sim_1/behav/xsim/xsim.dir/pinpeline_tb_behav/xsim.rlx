@@ -1,0 +1,12 @@
+
+{ 
+    crc :  3501057409648836143  , 
+    ccp_crc :  0  , 
+    cmdline : " -wto ae2c174895354f02849ee2d4852d95bc --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot pinpeline_tb_behav xil_defaultlib.pinpeline_tb xil_defaultlib.glbl" , 
+    buildDate : "Oct  1 2018" , 
+    buildTime : "20:13:33" , 
+    linkCmd : "E:\\Xilinx\\Vivado\\2018.2\\data\\..\\tps\\mingw\\6.2.0\\win64.o\\nt\\bin\\gcc.exe -Wa,-W  -O -Wl,--stack,104857600 -o \"xsim.dir/pinpeline_tb_behav/xsimk.exe\"   \"xsim.dir/pinpeline_tb_behav/obj/xsim_0.win64.obj\" \"xsim.dir/pinpeline_tb_behav/obj/xsim_1.win64.obj\" \"E:\\Xilinx\\Vivado\\2018.2\\lib\\win64.o\\\\librdi_simulator_kernel.dll\"  \"E:\\Xilinx\\Vivado\\2018.2\\lib\\win64.o\\\\librdi_simbridge_kernel.dll\"" , 
+    aggregate_nets : 
+    [ 
+    ] 
+} 

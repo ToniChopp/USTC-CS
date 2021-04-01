@@ -1,0 +1,105 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+| Date         : Fri May 31 20:02:58 2019
+| Host         : LAPTOP-8P9O5NTA running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file ddu_control_sets_placed.rpt
+| Design       : ddu
+| Device       : xc7a100t
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    41 |
+| Unused register locations in slices containing registers |    10 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|    16+ |           41 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              64 |           18 |
+| No           | No                    | Yes                    |             200 |           30 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |              66 |           11 |
+| Yes          | No                    | Yes                    |            2212 |          431 |
+| Yes          | Yes                   | No                     |              48 |            6 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+------------------------------------------------------------------------------------------+------------------+------------------+----------------+
+|  Clock Signal  |                                       Enable Signal                                      | Set/Reset Signal | Slice Load Count | Bel Load Count |
++----------------+------------------------------------------------------------------------------------------+------------------+------------------+----------------+
+|  clk_IBUF_BUFG | seg_in                                                                                   | rst_IBUF         |                5 |             24 |
+|  clk_IBUF_BUFG | cpu/mdr_reg[31]_0                                                                        | cnt[23]_i_1_n_1  |                6 |             48 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[7][31][0]                                                           | rst_IBUF         |               22 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[3][31][0]                                                           | rst_IBUF         |               11 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[4][31][0]                                                           | rst_IBUF         |               13 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[8][31][0]                                                           | rst_IBUF         |               16 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[9][31][0]                                                           | rst_IBUF         |               20 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[20][31][0]                                                          | rst_IBUF         |               12 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[25][31][0]                                                          | rst_IBUF         |                7 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[18][31][0]                                                          | rst_IBUF         |                9 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[1][31][0]                                                           | rst_IBUF         |                9 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[21][31][0]                                                          | rst_IBUF         |               10 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[16][31][0]                                                          | rst_IBUF         |               11 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[22][31][0]                                                          | rst_IBUF         |               17 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[28][31][0]                                                          | rst_IBUF         |               14 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[2][31][0]                                                           | rst_IBUF         |                7 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[30][31][0]                                                          | rst_IBUF         |               15 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[5][31][0]                                                           | rst_IBUF         |               12 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[6][31][0]                                                           | rst_IBUF         |               14 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[26][31][0]                                                          | rst_IBUF         |                9 |             64 |
+|  n_0_117_BUFG  |                                                                                          |                  |               18 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[17][31][0]                                                          | rst_IBUF         |                8 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[19][31][0]                                                          | rst_IBUF         |                9 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[23][31][0]                                                          | rst_IBUF         |               17 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[24][31][0]                                                          | rst_IBUF         |               11 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[27][31][0]                                                          | rst_IBUF         |               10 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[29][31][0]                                                          | rst_IBUF         |                7 |             64 |
+|  clk_IBUF_BUFG | cpu/control/E[0]                                                                         | rst_IBUF         |               18 |             64 |
+|  clk_IBUF_BUFG | cpu/control/PC_reg[0]_1[0]                                                               | rst_IBUF         |               21 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[10][31][0]                                                          | rst_IBUF         |               12 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[14][31][0]                                                          | rst_IBUF         |               10 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[11][31][0]                                                          | rst_IBUF         |                8 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[15][31][0]                                                          | rst_IBUF         |               19 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[12][31][0]                                                          | rst_IBUF         |               14 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[13][31][0]                                                          | rst_IBUF         |               13 |             64 |
+|  clk_IBUF_BUFG | cpu/control/regs_reg[0][31][0]                                                           | rst_IBUF         |                9 |             64 |
+|  clk_IBUF_BUFG | cpu/mdr_reg[31]_0                                                                        |                  |               11 |             66 |
+|  clk_IBUF_BUFG | cpu/control/IRWrite                                                                      | rst_IBUF         |               12 |             76 |
+|  clk_IBUF_BUFG |                                                                                          | rst_IBUF         |               30 |            200 |
+|  clk_IBUF_BUFG | cpu/MEM/U0/synth_options.dist_mem_inst/gen_dp_ram.dpram_inst/ram_reg_128_255_0_0_i_1_n_0 |                  |               32 |            256 |
+|  clk_IBUF_BUFG | cpu/MEM/U0/synth_options.dist_mem_inst/gen_dp_ram.dpram_inst/ram_reg_0_127_0_0_i_1_n_0   |                  |               32 |            256 |
++----------------+------------------------------------------------------------------------------------------+------------------+------------------+----------------+
+
+
