@@ -1,1 +1,0 @@
--wto "397e3db0540942179ded8c696cea692e" --incr --debug "typical" --relax --mt "2" -L "dist_mem_gen_v8_0_12" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" -L "xpm" --snapshot "Multicycle_MIPS_CPU_tb_behav" "xil_defaultlib.Multicycle_MIPS_CPU_tb" "xil_defaultlib.glbl" -log "elaborate.log" 

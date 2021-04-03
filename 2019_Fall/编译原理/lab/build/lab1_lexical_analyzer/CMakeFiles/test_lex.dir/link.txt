@@ -1,1 +1,0 @@
-/usr/bin/cc   -std=c99  -O0 -Wall -g2 -ggdb   CMakeFiles/test_lex.dir/test_lex.c.o CMakeFiles/test_lex.dir/lex.yy.c.o  -o ../test_lex -rdynamic ../lib/libcommon.a 

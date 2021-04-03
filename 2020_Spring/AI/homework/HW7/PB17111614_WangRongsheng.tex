@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\setmainfont{Microsoft YaHei}
+\usepackage{geometry}
+\usepackage{ctex}
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\title{Artificial Intelligence HW7}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\section*{14.12}
+	\subsection*{a.}
+	(ii)\ (iii)\ 都可以
+	\subsection*{b.}
+	(ii)更好，因为结构更简便，所需要的参数更少
+	\subsection*{c.}
+	由贝叶斯公式：\\
+	$$P(M_{1}|N)=P(M_{1}|N,F_{1})P(F_{1}|N)+P(M_{1}|N,\neg F_{1})P(\neg F_{1}|N)$$
+	$$P(M_{1}|N)=P(M_{1}|N,F_{1})P(F_{1})+P(M_{1}|N,\neg F_{1})P(\neg F_{1})$$
+	所以经过计算得下表： \\
+	\includegraphics*[scale = 0.55]{1.png}
+	\section*{14.13}
+	$$P(N|M_{1}=2,M_{2}=2)=\alpha \sum_{F_{1},F_{2}}^{ }P(N,F_{1},F_{2},M_{1}=2,M_{2}=2) $$
+	$$=\alpha \sum_{F_{1},F_{2}}^{ }P(F_{1})P(F_{2})P(N)P(M_{1}=2|F_{1},N)P(M_{2}=2|F_{2},N) $$
+	由于$N\in {1,2,3}$所以当望远镜对焦不准确时看不到恒星。所以$P(F_{1})=P(F_{2})=1-f$。令$P(N=1)=p_{1},P(N=2)=p_{2},P(N=3)=p_{3}$所以由枚举算法：
+	$$P(N|M_{1}=2,M_{2}=2)=\alpha (1-f)(1-f)<p_{1},p_{2},p_{3}><e,(1-2e),e><e,(1-2e),e>$$
+	$$=\alpha(1-f)^{2}<p_{1}e^{2},p_{2}(1-2e)^{2},p_{3}e^{2}>$$
+	$$=\alpha '<p_{1}e^{2},p_{2}(1-2e)^{2},p_{3}e^{2}>$$
+	\section*{14.15}
+	\subsection*{a.}
+	$$P(B,|j,m)=\alpha P(B)\sum_{e}^{ }P(E)\sum_{a}^{ }P(a|B,e)P(j|a)P(m|a)$$
+	$$=\alpha P(B)\sum_{e}^{ }P(E)(\left(
+	\begin{matrix}
+	.95 & .29 \\
+	.94 & .001
+	\end{matrix}
+	\right)\times .90 \times .70+\left(
+	\begin{matrix}
+	.05 & .71\\
+	.06 & .999
+	\end{matrix}
+	\right)\times .05\times .01)$$
+	$$=\alpha P(B)\sum_{e}^{ }P(E)\left(
+	\begin{matrix}
+	0.598525 & 0.183055\\
+	0.59223 & 0.0011295
+	\end{matrix}
+	\right)$$
+	$$=\alpha P(B)\times (.002\times \left(
+	\begin{matrix}
+	0.598525\\
+	0.183055
+	\end{matrix}
+	\right)+.998\times \left(
+	\begin{matrix}
+	0.59223\\
+	0.0011295
+	\end{matrix}
+	\right))$$
+	$$=\alpha \left(
+	\begin{matrix}
+	.001\\
+	.999
+	\end{matrix}
+	\right) \times
+	\left(
+	\begin{matrix}
+	0.59224259\\
+	0.001493351
+	\end{matrix}
+	\right)$$
+	$$=\alpha \left(
+	\begin{matrix}
+	0.00059224259\\
+	0.0014918576
+	\end{matrix}
+	\right)$$
+	$$\approx <0.284,0.716>$$
+	计算结果与使用枚举法所得结果一致，所以正确。
+	\subsection*{b.}
+	考虑最终求出具体概率比值，使用了16次乘法，7次加法，2次除法。枚举算法由于有j道m的重复路径，所以会多出来2次额外的乘法。
+	\subsection*{c.}
+	\par{使用枚举算法时，会生成两颗结构相似的完全二叉树，$X_{1}$节点的深度为n-1，所以复杂度为$O(2^{n-1})$}
+	\par{使用变量消元法时，有：\\
+	$$P(X_{1}|X_{n}=true)=P(X_{1})...\sum_{X_{n-2}}^{ }P(X_{n-2}|X_{n-3})\sum_{X_{n-1}}^{}P(X_{n-1}|X_{n-2})P(X_{n}=true|X_{n-1})$$
+	所以每一次消元需要处理的节点只有$X_{i}$和$X_{i-1},\ 1\textless i\textless n$所以可以在线性时间内完成。复杂度为$O(n)$}
+\end{document}

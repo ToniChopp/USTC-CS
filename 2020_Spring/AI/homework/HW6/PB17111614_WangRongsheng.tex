@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\setmainfont{Microsoft YaHei}
+\usepackage{geometry}
+\usepackage{ctex}
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\title{Artificial Intelligence HW6}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\section*{13.15}
+	$P(阳性|患病)=0.99, P(¬阳性|¬患病)=0.99, P(患病)=0.0001   $\\
+	所以$P(患病 | 阳性)=\frac{P(阳性|患病)P(患病)}{P(阳性)}=\frac{P(阳性|患病)P(患病)}{P(阳性|患病)P(患病)+P(阳性|¬患病)P(¬患病)}=\frac{0.99\*0.0001}{0.99\*0.0001+0.01\*0.9999}=0.0098$ \\
+	
+	因为“这种病很罕见”使得患病概率比较低，导致检测阳性时确诊患病的条件概率也比较低，所以是个好消息。实际患病概率为0.0098
+	\section*{13.18}
+	\subsection*{a.}
+	由已知条件： $P(真币)=\frac{n-1}{n},P(假币)=\frac{1}{n},P(正面|假币)=1,P(正面|真币)=\frac{1}{2}$\\
+	所以所求为$P(假币|正面)=\frac{P(正面|假币)P(假币)}{P(正面|假币)P(假币)+P(正面|真币)P(真币)}=\frac{1\times \frac{1}{n}}{1\times\frac{1}{n}+\frac{1}{2}\times \frac{n-1}{n}}=\frac{2}{n+1}$
+	\subsection*{b.}
+	$P(假币|K次正面)=\frac{P(K次正面|假币)P(假币)}{P(K次正面|假币)P(假币)+P(K次正面|真币)P(真币)}=\frac{1\times \frac{1}{n}}{1\times \frac{1}{n}+(\frac{1}{2})^{k}\times \frac{n-1}{n}}=\frac{2^{k}}{n+2^{k}-1}$
+	\subsection*{c}
+	发生错误的概率$=P(K次正面|真币)P(真币)=\frac{n-1}{2^{k}n}$
+	\section*{13.22}
+	\subsection*{a.}
+	模型包括先验概率P(category)和条件概率$P(content_{i}|category)$对于每个分类类别c，P(category=c)是文档全被归类为c的概率，$P(content_{i}=true|category=c)$是被归类为c的文档包含内容$content_{i}$的概率
+	\subsection*{b.}
+	$P(content_{i}|category), p(category)$都可以根据已知条件算出来，再由Bayes公式，分类时将$P(content_{i}|category)p(category)$最大的值分为一类，然后剩余的文档重复此操作，即可完成分类一个新文档。
+	\subsection*{c.}
+	不合理，自然语言组成的文档不是上下文无关的，所以单词之间不具有独立性，所以条件独立性假设不合理。
+\end{document}

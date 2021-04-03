@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\setmainfont{Microsoft YaHei}
+\usepackage{geometry}
+%\setlength{\parindent}{0pt}   %控制缩进
+\usepackage{ctex}
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\title{Artificial Intelligence Lab1 Report}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\section{数码问题：}
+	\subsection*{(1). 启发式函数}
+	启发式函数使用曼哈顿距离，即根据输入的初始状态和最终状态，计算每个数字从初始状态到最终状态的曼哈顿距离作为h，对于"7"型数字，将左上块位置作为定位点。对于每个数字的曼哈顿距离，额外赋一个权值gWeight，用来表示曼哈顿距离带来的实际代价。在这里我把每个数字的权值都赋值为10，将各个数字的权值乘以曼哈顿距离并求和，作为这个状态的总h值。
+	\subsection*{(2). 采用策略}
+	采用搜索策略，将"7"也当做普通的数字快，根据位置做判断来移动，每次移动后得到一个新的状态，赋以一个Hash值作为对这个状态的唯一编号，来保证不会重复出现某状态，导致最终死循环。
+	\subsection*{(3). 伪代码概括算法}
+	\subsubsection*{A* Search:}
+	这里使用文字描述比较方便，首先将输入作为初始状态initNode，然后计算它的f,\ g,\ h,\ 以及\ Hash\ 值stateKey用来做唯一标识。这里调用了C++封装好的容器unordered\_set以及priority\_queue，前者按照\ Hash\ 表存储数据，所以调用插入、查找、删除操作都可以在O(1)的时间内完成。后者是优先级队列，将各种状态的f值大小作为优先级插入队列中，则队列中队头元素的f值为最小值。在搜索中，当队列不为空时，每次取出队头元素可以作为可能的下一状态，先判断7能否移动，如果可以则先移动7，生成新的node，即调用MakeNode函数，生成下一状态。若得到了最终状态，即判断方法为h=0则结束算法，否则继续看7能否移动，7不能移动了开始选择可以移动的其他数字。同时这里把每个新生成的状态的Hash值存入unordered\_set，以防止某个状态重复出现发生循环。用这种状态可以转移则转移，转移失败则回溯的方法，最终可以求解问题，输出移动方式。
+	\subsubsection*{IDA* Search:}
+	大体逻辑与A*相同，区别在于每次取出一个node时看它的f值，并找是否有其他node的f值与该结点相同，有则对此迭代，没有则将下一个f最小的node作为nextNode。
+	\subsection*{(4). 复杂度}
+	\subsubsection*{A* Search}
+	由于对于状态的查找操作都是在O(1)，而优先队列的维护代价为O(lgn)，n为出现的状态空间数，所以使用A*搜索的总的时间复杂度为$O(b^{\epsilon(d+1)})$，b为层数，d为深度。空间复杂度为$O(nb^{d})$因为空间上只存储了足够多的个状态的数值化表示。
+	\subsubsection*{IDA* Search:}
+	时间复杂度同上为$O(b^{\epsilon(d+1)})$，由于此时只存储了上一状态的f值，其余的都删除了，所以空间复杂度为$O(b^{d})$
+	\subsection*{(5). 运行结果}
+	\subsubsection*{A* Search}
+	输入1.txt:\\
+	\includegraphics*[scale = 0.6]{1.png}\\
+	输入2.txt:\\
+	\includegraphics*[scale = 0.6]{2.png}\\
+	输入3.txt:\\
+	\includegraphics*[scale = 0.6]{3.png}\\
+	\subsubsection*{IDA* Search}
+	输入1.txt\\
+	\includegraphics*[scale = 0.6]{6.png}\\
+	输入2.txt\\
+	\includegraphics*[scale = 0.6]{7.png}\\
+	输入3.txt\\
+	\includegraphics*[scale = 0.6]{8.png}\\
+	\section*{X数独问题：}
+	\subsection*{算法思想}
+	对于输入的初始数独，先做行检查、列检查、粗线宫检查、对角线检查，以确定CSP问题的约束条件。如果找不到可以填入的值，要么数独无解，要么回溯。用回溯的思想最终可以确定数独每个格子中的值。\\
+	优化：使用MRV启发式以及前向检验，选择要填数字的格子的时候选择可选空间最小的格子，前向检验来消除肯定无法填入格子的数字来减少迭代次数与回溯次数，以减少程序运行时间。
+	\subsection*{实验结果}
+	不优化时运行时间：\\
+	\includegraphics*[scale = 0.6]{4.png}\\
+	优化后运行时间: \\
+	\includegraphics*[scale = 0.6]{5.png}\\
+	分析：\\
+	可见优化后运行时间比不优化时在数独问题复杂的时候大大缩短。不优化时由于不进行前向检验，导致对每个格子，可能填入的值都会被填入一遍作为一个结点，完全没有考虑填入当前格子值后其他格子无法填入的情况。而加入前向检验同时用MRV启发式后，可以保证当前填入数字后，其余受其约束的格子仍然有值可以填入。同时首先选择最少剩余可选数字的格子填入，可以保证迭代展开的结点数尽可能的少。
+	\subsection*{思考题}
+	\subsubsection*{a)}
+	可以爬山算法来解决。\\
+	爬山：把CSP的约束条件取相反数作为爬山的值，利用局部贪心使得填入一个数字后剩余的约束条件尽可能地少，如果不行则回溯，由此求解\\
+	模拟退火与遗传没有想出来。
+	\subsubsection*{b)}
+	使用爬山算法时，没有选好高度值可能会对于特定的可以求解的数独，根据算法求解的时候结果为无解，或者迭代次数过多导致程序执行缓慢，因为爬山算法只关注局部值，无法对于数独问题这种需要兼顾全局的问题做太好的求解。
+\end{document}

@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\setmainfont{Microsoft YaHei}
+\usepackage{geometry}
+%\setlength{\parindent}{0pt}
+\usepackage{ctex}
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\title{Artificial Intelligence HW8}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\section*{1.}
+	因为决策树是通过属性来划分的，每个叶结点由唯一的一串属性索引。所以相同属性的样本最后会进入相同的叶结点，一个叶结点只有一个分类。如果样本属性相同但分类不同，则会产生训练误差。由于训练集不含冲突数据，所以决策树根据深度优先法构造，只会在当前样本集合是同一类或者所有属性相同时才会停止划分，最终得到训练误差为0的决策树。
+	\section*{2.}
+	首先构造并求解最优约束化问题:
+	$$\min_{\alpha}\frac{1}{2}\sum_{i=1}^{5}\sum_{j=1}^{5}\alpha_{i}\alpha_{j}y_{i}y_{j}(x_{i}\cdot x_{j})-\sum_{i=1}^{5}\alpha_{i}$$
+	$\min_{\alpha}\frac{1}{2}(5\alpha_{1}^{2}+13\alpha_{2}^{2}+18\alpha_{3}^{2}+5\alpha_{4}^{2}+13\alpha_{5}^{2}+18\alpha_{1}\alpha_{2}+18\alpha_{1}\alpha_{3}-8\alpha_{1}\alpha_{4}-14\alpha_{1}\alpha_{5}+30\alpha_{2}\alpha_{3}-14\alpha_{2}\alpha_{4}-24\alpha_{2}\alpha_{5}-18\alpha_{3}\alpha_{4}-30\alpha_{3}\alpha_{5}+16\alpha_{4}\alpha_{5})-(\alpha_{1}+\alpha_{2}+\alpha_{3}+\alpha_{4}+\alpha_{5})$\\
+	条件为$\alpha_{1}+\alpha_{2}+\alpha_{3}-\alpha_{4}-\alpha_{5}=0, \alpha_{i}\ge 0$\\
+	分别对$\alpha_{1}$,$\alpha_{2}$,$\alpha_{3}$,$\alpha_{4}$,$\alpha_{5}$求导：\\
+	$5\alpha_{1}+9\alpha_{2}+9\alpha_{3}-4\alpha_{4}-7\alpha_{5}-1=0$\\
+	$13\alpha_{2}+9\alpha_{1}+15\alpha_{3}-7\alpha_{4}-12\alpha_{5}-1=0$\\
+	$18\alpha_{3}+9\alpha_{1}+15\alpha_{2}-9\alpha_{4}-15\alpha_{5}-1=0$\\
+	$5\alpha_{4}-4\alpha_{1}-7\alpha_{2}-9\alpha_{3}+8\alpha_{5}-1=0$\\
+	$13\alpha_{5}-7\alpha_{1}-12\alpha_{2}-15\alpha_{3}+8\alpha_{4}-1=0$\\
+	再根据$\alpha_{1}+\alpha_{2}+\alpha_{3}-\alpha_{4}-\alpha_{5}=0$解方程组得：\\
+	$\alpha=(\frac{1}{2},1,0,1,\frac{1}{2})^{T}$\\
+	所以$w^{*}=(-1,2)^{T},b=-2$\\
+	分离超平面为$-x^{(1)}+2x^{(2)}-2=0$\\
+	分类决策函数$f(x)=sign(-x^{(1)}+2x^{(2)}-2)$\\
+	\includegraphics*[scale = 0.45]{1.png}
+\end{document}

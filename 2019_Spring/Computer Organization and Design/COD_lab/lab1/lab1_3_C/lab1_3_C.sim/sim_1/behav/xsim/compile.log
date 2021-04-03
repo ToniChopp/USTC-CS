@@ -1,6 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/COD/lab1_3_C/lab1_3_C.srcs/sources_1/imports/new/lab1.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module ALU
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/COD/lab1_3_C/lab1_3_C.srcs/sources_1/new/lab1_3_C.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module lab1_3_C
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/COD/lab1_3_C/lab1_3_C.srcs/sim_1/new/Fib_tb.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module Fib_tb

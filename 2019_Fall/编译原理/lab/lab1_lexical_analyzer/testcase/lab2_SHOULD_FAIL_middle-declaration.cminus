@@ -1,7 +1,0 @@
-int main(void)
-{
-	int i;
-	i = 1;
-	int j;
-	return 0;
-}

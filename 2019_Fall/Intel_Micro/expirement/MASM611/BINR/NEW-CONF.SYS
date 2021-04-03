@@ -1,6 +1,0 @@
-files=20
-buffers=10
-device=D:\MASM611\BINR\himem.sys
-device = D:\MASM611\BINR\emm386.exe 8192 RAM
-REM Use the following line to run CodeView without Windows or 386MAX loaded.
-REM device = D:\MASM611\BINR\emm386.exe 2048 RAM

@@ -1,6 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/COD/lab3_3/lab3_3.srcs/sources_1/new/FIFO.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module FIFO
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/COD/lab3_3/lab3_3.srcs/sources_1/imports/new/Register_file.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module Register_file
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/COD/lab3_3/lab3_3.srcs/sim_1/new/FIFO_tb.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module FIFO_tb
