@@ -1,0 +1,33 @@
+\documentclass[UTF8]{ctexart}  
+\title{HW3}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\section*{1.}
+	\par{MAX-HEAPIFY算法中，每个孩子的子树的大小之多为$\frac{2n}{3}$，而调整A[i]、A[LEFT(i)]、和A[RIGHT(i)]的关系的时间代价为$\Theta$(1)，所以MAX-HEAPIFY的运行时间为：}\\
+	        $T(n)\le T(\frac{2n}{3})+\Theta(1)$
+	\par{所以由主方法：a=1，b=$\frac{3}{2}$，f(n)=$\Theta$(1)=$\Theta(n^{0})$=$\Theta(n^{log_{\frac{3}{2}}1})$}
+	\par{所以T(n)=$\Theta(n^{log_{\frac{3}{2}}1}lgn)$=$\Theta(n^{0}lgn)$=$\Theta(lgn)$}
+	\par{MAX-HEAPIFY的时间复杂度是O(lgn)得证}\\
+	\par{由于包含n个元素的堆的高度为$\lfloor lgn\rfloor$，高度为h的结点最多包含$\lceil\frac{n}{2^{h+1}}\rfloor$个结点。所以在一个高度为h的结点上允许MAX-HEAPIFY的代价为O(h)。所以BUILD-MAX-HEAP的总代价为}
+	
+	\noindent{$\sum_{h=0}^{\lfloor lgn\rfloor}\lceil\frac{n}{2^{h+1}}\rceil O(h)=O(n\sum_{h=0}^{\lceil lgn\rceil}\frac{h}{2^{h}})=O(n)$}
+	\section*{2.}
+	\noindent{(a)}
+	\par{设随机数组有n个数，分别为A[0]A[1]...A[n-1]，设有X个数被划分在左半部分，Y个数被划分在右半部分，X+Y=n。$\left|X-Y\right|$的值越大，划分越不平衡。}
+	\par\noindent{分三种情况讨论：}\\
+	 1. X$\le\alpha$n时,Y$\ge(1-\alpha)n$，$\left|X-Y\right|\textgreater(1-2\alpha)n\textgreater0$\\
+	 2. $\alpha n\textless X\le(1-\alpha)$n时,$(1-\alpha)n\le Y\textless\alpha n$，$0\le\left|X-Y\right|\textless(1-2\alpha)n$\\
+	 3. $X\textgreater(1-\alpha)n$时，Y$\textless\alpha n$，$\left|X-Y\right|\textgreater(1-2\alpha)n$\\
+	 显然情况2最为趋近平衡。X取值在$\alpha n$和$(1-\alpha)n$之间更加平衡。由于X落在1到n之间的概率是等可能的，服从均匀分布。所以X落在$\alpha n$和(1-$\alpha n$)之间的概率为1-2$\alpha$，即PARTITION产生更平衡的划分的概率为1-2$\alpha$。
+	\\
+	\\
+	\noindent{(b)}
+	\par{对于叶结点的最小深度：}
+	\par{由于$\alpha\le\frac{1}{2}$，所以最小深度的结点应该在$\alpha$划分中。设x为深度：}
+	\par{则$n\alpha^{x}=1$，取对数$x+log_{\alpha}n=0$，即$x+\frac{lgn}{lg\alpha}=0$所以最小深度为$-\frac{lgn}{lg\alpha}$}
+	\par{对于叶结点的最大深度：}
+	\par{由于$\alpha\le\frac{1}{2}$，所以最大深度的结点应该在$1-\alpha$划分中。设x为深度：}
+	\par{则$n(1-\alpha)^{x}=1$，取对数$x+log_{1-\alpha}n=0$，即$x+\frac{lgn}{lg1-\alpha}=0$所以最大深度为$-\frac{lgn}{lg1-\alpha}$}
+\end{document}

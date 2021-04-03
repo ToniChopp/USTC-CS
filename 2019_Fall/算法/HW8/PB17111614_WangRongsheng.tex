@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\setmainfont{Microsoft YaHei}
+\usepackage{geometry}
+\usepackage{ctex}
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\title{HW8}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\section*{1.}
+	\par{对于这个由n个操作组成的操作序列，当且仅当i为$2^{m}$，$m\in N$时第i个操作的代价为i，其他代价为1.所以这个操作序列的总个数为n时，设$2^{k}\le n< 2^{k+1}$，则执行n个操作的序列的时间为$(n-k)\times1+\frac{2\times(1-2^{k})}{1-2}=2^{k+1}-2+n-k$，因为$k=\lfloor log(n)\rfloor$，所以总时间为$O(n)$，即摊还代价为$O(n)/n=O(1)$}
+	\section*{2.}
+	\par{令每个操作的摊还代价为3，令第一个操作的实际代价为1，则信用为2。假设执行第$2^{i}$个操作后的信用为非负的，接下来的$2^{i}-1$个操作的实际代价为1，则可从每个操作获得的信用都为2。总信用为$2^{i+1}-2$。对于第$2^{i+1}$个操作，一开始设定的3个代价给了$2^{i+1}+1$个信用来使用，而代价为$2^{i+1}$，仍然留下了一个信用。所以对于任意一个操作，信用都是非负的。所以对于每个操作来说，摊还代价为$O(1)$，n个操作的总摊还代价为$O(n)$。}
+	\section*{3.}
+	\par{当操作序号$i=2^{k}$时，令$\Phi(D_{i})=k+3$，否则$k=\lfloor log(i)\rfloor$，令$\Phi(D_{i})=\Phi(D_{2^{k}})+2(i-2^{k})$。令$\Phi(D_{0})=0$，则对于$\forall i\ge0$，$\Phi(D_{i})\ge0$。当i或i-1都不等于$2^{k}$时，$\Phi(D_{i})-\Phi(D_{i-1})=2$。当$i=2^{k}$时，$\Phi(D_{i})-\Phi(D_{i-1})=0$，所以n个操作的总摊还代价为$\sum_{i=1}^{n}\hat{c}_{i}=O(n)$。}
+	\section*{4.}
+	\subsection*{4.(a)}
+	$$y_{k_{1},k_{2},...,k_{d}}=\sum_{j_{1}=0}^{n_{1}-1}\sum_{j_{2}=0}^{n_{2}-1}···\sum_{j_{d}=0}^{n_{d}-1}a_{j_{1},j_{2},...,j_{d}}\omega_{n_{1}}^{j_{1}k_{1}}\omega_{n_{2}}^{j_{2}k_{2}}···\omega_{n_{d}}^{j_{d}k_{d}}$$
+	$$=\sum_{j_{d}=0}^{n_{d}-1}···\sum_{j_{2}=0}^{n_{2}-1}(\sum_{j_{1}=0}^{n_{1}-1}a_{j_{1},j_{2},...,j_{d}}\omega_{n_{1}}^{j_{1}k_{1}})\omega_{n_{2}}^{j_{2}k_{2}}···\omega_{n_{d}}^{j_{d}k_{d}}$$
+	\par{括号中的内容即为一维的DFT，由于需要给求和的每一项都计算，所以一共要计算$n_{2}n_{3}...n_{d}=n/n_{1}$次，由于每一项a的值可能不同，所以每计算一次，求和的总数目减一。通过这个方法可以继续减少维数，对第k维来说，需要计算$n/(\prod_{i\le k}^{}n_{i})$个独立的一维DFT。}
+	\subsection*{4.(b)}
+	\par{对于求和，由于任何被求和的元素都没有出现在求和边界上。所以求和的顺序可以随意交换，维度的次序不会影响。}
+	\subsection*{4.(c)}
+	\par{对运算每个DFT来说，第k维的时间为$O(n_{k}log(n_{k}))$。只需要执行$n/(\prod_{i\le k}^{}n_{i})$次，所以总时间为$O(n/(\prod_{i\le k}^{}n_{i})log(n_{k}))$}\\
+	$ \sum_{k=1}^{d}n/(\prod_{i\le k}^{}n_{i})log(n_{k})\le lgn\sum_{k=1}^{d}n/(\prod_{i\le k}^{}n_{i})\le lgn\sum_{k=1}^{d}n/(2^{k-1})\textless nlgn $
+	\par{所以总时间为$O(nlgn)$}
+\end{document}

@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../lib/liblex.a  CMakeFiles/lex.dir/lexical_analyzer.c.o CMakeFiles/lex.dir/lex.yy.c.o
+/usr/bin/ranlib ../lib/liblex.a

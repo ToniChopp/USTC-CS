@@ -1,0 +1,21 @@
+\documentclass[UTF8]{ctexart}  
+\title{HW4}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\section*{1.}
+    \par{插入排序、归并排序、计数排序是稳定的，堆排序和快速排序不是稳定的。可以通过新构造一个结构体来存储要排序的元素来使得任何排序算法都稳定。结构体存储了被排序的元素的值以及其初始位置。例如原来要排列数组[a1,a2,a3,a4]，使用结构体存储后，形式为[$(a_{1},1)$，$(a_{2},2)$，$(a_{3},3)$，$(a_{4},4)$]这时重新定义结构体之间的大小关系，(i,j)<(k,m)当且仅当i$\le$k且j$\textless$m。将此判别条件作为新的比较判别式，这样就可以保证排序算法是稳定的。用这种方法，额外的时间开销可以忽略不计，增加的空间复杂度为O(n)，其中n为被排序的元素个数。}
+    \section*{2.}
+    \par{当用RANDOM-SELECT选择数组的最小元素时，每次划分总是按照余下的元素中最大的进行划分时是最坏情况。}\\
+    \noindent{pivot=9 \qquad \{3,2,0,7,5,4,8,6,1\}}\\
+    \noindent{pivot=8 \qquad \{3,2,0,7,5,4,6,1\}}\\
+    \noindent{pivot=7 \qquad \{3,2,0,5,4,6,1\}}\\
+    \noindent{pivot=6 \qquad \{3,2,0,5,4,1\}}\\
+    \noindent{pivot=5 \qquad \{3,2,0,4,1\}}\\
+    \noindent{pivot=4 \qquad \{3,2,0,1\}}\\
+    \noindent{pivot=3 \qquad \{2,0,1\}}\\
+    \noindent{pivot=2 \qquad \{0,1\}}\\
+    \noindent{pivot=1 \qquad \{0\}}\\
+    \noindent{return 0}
+\end{document}

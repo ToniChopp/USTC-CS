@@ -1,0 +1,47 @@
+\documentclass[UTF8, 11pt]{ctexart} 
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}   
+\usepackage{graphicx}  
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\title{HW6}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\section*{1.}
+	\subsection*{a.}
+	\par{设最大重叠点为点M，共有K个区间集合过点M。设为$I_{1},I_{2}...I_{K}$,其中$I_{K}=[L_{K},R_{K}]$。则对$ {\forall}i\in [1,K]$，$L_{i}\leq M\leq R_{i}$。令$L^{*}=max(L_{1},L_{2}...L_{K})$，则$L_{i}\leq M \leq L^{*}$。假设$ {\exists}i\in [1,K]$，使得$R_{i}\textless L^{*}$，所以$R_{i}\textless L^{*}\leq M$,与$ {\forall}i\in [1,K]$，$L_{i}\leq M\leq R_{i}$矛盾。因此，$ {\forall}i\in [1,K]$，$L_{i}\leq L^{*}\leq R_{i}$。所以共有K个区间集合过点$L^{*}$，由此得证最大重叠点可以是其中一个区间的左端点，证毕。}
+	\subsection*{b.}
+	\par{用一个红黑树来记录所有的区间的端点，将端点从左到右一个个插入红黑树，当插入的是左端点$L_{i}$时，$P(e_{i})+=1$，同理当插入的是右端点$R_{i}$时，$P(e_{i})-=1$。即插入左端点时重叠数+1，插入右端点时重叠数-1。当多个端点有相同的值时，先把同值的所有左端点都插入然后插入右端点。令$e_{1},e_{2}...e-{n}$为区间端点的对应序列，S(i,j)为$1\leq i\leq j\leq n$时$P(e_{i})+P(e_{i+1})+...+P(e_{j})$的和，找一个i使得S(1,i)最大。对于每个节点x，存储V(x)=S(L(x),R(x))，即子树中所有结点的和。M(x)=max(S(L(x),i))，O(x)为对应的i的值。}\\
+	$V(x)=V(L(x))+P(x)+V(R(x))$\\
+	$M(x)=max\{M(L(x)),V(L(x))+P(x),V(L(x))+P(x)+M(R(x))\}$\\
+	计算O(x)可以通过算得的M(x)来计算。
+	\par{INTERVAL\_INSERT和INTERVAL\_DELETE可以通过调用红黑树的插入和删除操作，然后进行对V(x),M(x),O(x)的维护来实现。返回最大重叠点FIND\_POM只需要寻找满足O(x)的x对应点，即为最大重叠点，所需要的时间复杂度为O(1)}
+	\section*{2.}
+	\subsection*{a.}
+	\par{对于将要被删除的结点x，假设原斐波那契堆中有n个元素，则x的最大度数为$lgn$。所以x的子结点个数$x.degree$最多有$lgn$个，所以第八行将x的子结点插入到H的根链表中操作的时间复杂度应该是$O(x.degree)$}
+	\subsection*{b.}
+	\par{第八行将x的子结点插入根链表需要$O(x.degree)$的时间，而c次调用CASCADING\_CUT需要$O(C)$的时间。所以该算法的总运行时间为$O(c+x.degree)$}
+	\section*{3.}
+	\subsection*{MAKE-SET:}
+    \Function {MAKE-SET}{$x$}  
+    \State $S.head=x$  
+    \State $S.tail=x$
+    \State $x.next=NIL$
+    \State $x.rank=0$
+    \EndFunction  
+    \subsection*{FIND-SET:}
+    \Function {FIND-SET}{$x$}  
+    \State \Return $rep[x]$  //rep[x]表示包含x的集合对象
+    \EndFunction  
+    \subsection*{UNION:}
+    \Function{UNION}{x,y}
+    \If {$x.size>y.size$}
+        \State $Link\quad y\quad to\quad rep[x].tail$
+        \State $x.rank+=y.rank$
+    \Else
+        \State $Link\quad x\quad to\quad rep[y].tail$
+        \State $y.rank+=x.rank$
+\end{document}

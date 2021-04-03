@@ -1,0 +1,43 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\setmainfont{Microsoft YaHei}
+\usepackage{geometry}
+\usepackage{ctex}
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\title{EX3 实验报告}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\section*{EX3-1}
+	\par{思路：这道题我对于输入的点坐标，先进行对横坐标由小到大排序，使用计数排序。然后对排序好的点，此题可以转化为类似最长上升子串的动态规划经典模型。使用自底向上法做动态规划，用MaxLen[n]记录前n个点中最长的上升子串长度。转移方程：}
+	$$ MaxLen[n]=\left\{
+	\begin{aligned}
+	1\quad ,\quad n=1 \\
+	MAX_{1\le i\textless n, A[i]\textless A[n]}(MaxLen[i]+1,MaxLen[n])\quad ,\quad n>1
+	\end{aligned}
+	\right.
+	$$
+	\par{计数排序时间复杂度$O(n)$，对1到n确定MaxLen的值由于双重循环时间复杂度$O(n^{2})$，遍历MaxLen找到需要输出的最长子串值时间复杂度$O(n)$，所以总的时间复杂度为$O(n^{2})$}
+	\section*{EX3-2}
+	\par{思路：这道题我开设了二维数组，m[i][j]表示从第i个数组到第j个数组合并所需要的最小开销，状态转移方程：}
+	$$ m[i][j]=MIN(m[i][j],m[i][k]+m[k+1][j]+SUM(a,i,j+1)),i\le k\le j$$
+	\par{由于这里使用了三重循环，第一重循环k为数组序列长度，i为起始数组号，k为序列中间指针，所以时间复杂度为$O(n^{3})$}
+	\section*{EX3-3}
+	\par{思路：我开了个结构体来存储每一种物品的质量，价值和可选数量。多重背包我一开始想转化为部分背包来处理，使用贪心算法，结果发现了自己逻辑有错误，贪心算法并不能行得通。于是尝试最普通的三重循环做动态规划，结果发现会超时。于是采用了二进制优化。对于任何数，一定可以找到一串2的幂次数的组合来表示。所以我用cnt来表示$2^{n},n=0,1,2,3...$，对于第二重循环j从背包最大承重W到每个物体的质量$w_{i}$，j每次减去的量为$min(cnt.num_{i})*w_{i}$。令f[j]表示背包中有最大序号为i的物品时最大价值。转移方程为：}
+	$$f[j]=MAX(f[j],f[j-min(cnt.num_{i})*w_{i}]+min(cnt.num_{i})*v_{i}),1\le i\le j\le n$$
+	\par{时间复杂度为$O(nlgW)$}
+	\section*{EX3-EX}
+	\par{思路：这道题我用了一个比较巧妙的方法，把输入的0和1恰好取反，即0变1，1变0，这样就可以用二维数组本身的元素进行计数，把0 1串读入二维数组a，计数数组Square先做第一次计数————边长为1的正方形个数，然后根据状态方程：}
+	$$Square[i][j]=\left\{
+	\begin{aligned}
+	0\quad ,\quad a[i][j]=0 \\
+	MIN(Square[i-1][j-1],Square[i-1][j],Square[i][j-1])+1\quad ,\quad a[i][j]=1
+	\end{aligned}
+	\right.$$
+	\par{求出数组Square[i][j]的每个元素大小后，做累加即为总的正方形个数，时间复杂度$O(n^{2})$}
+\end{document}

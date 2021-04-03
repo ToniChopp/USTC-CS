@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsyntax_tree.a  CMakeFiles/syntax_tree.dir/SyntaxTree.c.o
+/usr/bin/ranlib libsyntax_tree.a

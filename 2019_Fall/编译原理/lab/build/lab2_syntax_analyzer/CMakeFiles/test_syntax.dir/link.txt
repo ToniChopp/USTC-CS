@@ -1,0 +1,1 @@
+/usr/bin/cc   -std=c99  -O0 -Wall -g2 -ggdb   CMakeFiles/test_syntax.dir/test_syntax.c.o  -o ../test_syntax -rdynamic ../lib/libsyntax.a ../lib/liblex.a ../lib/libcommon.a ../lib/libsyntax_tree.a 

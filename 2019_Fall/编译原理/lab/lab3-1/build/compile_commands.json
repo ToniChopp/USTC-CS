@@ -1,0 +1,47 @@
+[
+{
+  "directory": "/home/david/compiler_cminus/lab3-1/build/deps/syntax_tree",
+  "command": "/usr/bin/cc   -I/home/david/llvm-install/include -I/home/david/compiler_cminus/lab3-1/include -I/home/david/compiler_cminus/lab3-1/deps    -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/syntax_tree.dir/SyntaxTree.c.o   -c /home/david/compiler_cminus/lab3-1/deps/syntax_tree/SyntaxTree.c",
+  "file": "/home/david/compiler_cminus/lab3-1/deps/syntax_tree/SyntaxTree.c"
+},
+{
+  "directory": "/home/david/compiler_cminus/lab3-1/build/deps/syntax_tree",
+  "command": "/usr/bin/cc   -I/home/david/llvm-install/include -I/home/david/compiler_cminus/lab3-1/include -I/home/david/compiler_cminus/lab3-1/deps    -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/test_syntree.dir/test_tree.c.o   -c /home/david/compiler_cminus/lab3-1/deps/syntax_tree/test_tree.c",
+  "file": "/home/david/compiler_cminus/lab3-1/deps/syntax_tree/test_tree.c"
+},
+{
+  "directory": "/home/david/compiler_cminus/lab3-1/build/deps/analyzer",
+  "command": "/usr/bin/cc   -I/home/david/llvm-install/include -I/home/david/compiler_cminus/lab3-1/include -I/home/david/compiler_cminus/lab3-1/deps    -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/lex.dir/lex.yy.c.o   -c /home/david/compiler_cminus/lab3-1/deps/analyzer/lex.yy.c",
+  "file": "/home/david/compiler_cminus/lab3-1/deps/analyzer/lex.yy.c"
+},
+{
+  "directory": "/home/david/compiler_cminus/lab3-1/build/deps/analyzer",
+  "command": "/usr/bin/cc   -I/home/david/llvm-install/include -I/home/david/compiler_cminus/lab3-1/include -I/home/david/compiler_cminus/lab3-1/deps    -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/syntax.dir/syntax_analyzer.tab.c.o   -c /home/david/compiler_cminus/lab3-1/deps/analyzer/syntax_analyzer.tab.c",
+  "file": "/home/david/compiler_cminus/lab3-1/deps/analyzer/syntax_analyzer.tab.c"
+},
+{
+  "directory": "/home/david/compiler_cminus/lab3-1/build/src/io",
+  "command": "/usr/bin/cc   -I/home/david/llvm-install/include -I/home/david/compiler_cminus/lab3-1/include -I/home/david/compiler_cminus/lab3-1/deps    -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -o CMakeFiles/cminus_io.dir/io.c.o   -c /home/david/compiler_cminus/lab3-1/src/io/io.c",
+  "file": "/home/david/compiler_cminus/lab3-1/src/io/io.c"
+},
+{
+  "directory": "/home/david/compiler_cminus/lab3-1/build/src/syntax_tree_cpp",
+  "command": "/usr/bin/c++    -I/home/david/llvm-install/include -I/home/david/compiler_cminus/lab3-1/include -I/home/david/compiler_cminus/lab3-1/deps    -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++14 -o CMakeFiles/syntax_tree_cpp.dir/syntax_tree.cpp.o -c /home/david/compiler_cminus/lab3-1/src/syntax_tree_cpp/syntax_tree.cpp",
+  "file": "/home/david/compiler_cminus/lab3-1/src/syntax_tree_cpp/syntax_tree.cpp"
+},
+{
+  "directory": "/home/david/compiler_cminus/lab3-1/build/src/cminusc",
+  "command": "/usr/bin/c++    -I/home/david/llvm-install/include -I/home/david/compiler_cminus/lab3-1/include -I/home/david/compiler_cminus/lab3-1/deps    -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -fno-rtti -std=gnu++14 -o CMakeFiles/cminusc.dir/main.cpp.o -c /home/david/compiler_cminus/lab3-1/src/cminusc/main.cpp",
+  "file": "/home/david/compiler_cminus/lab3-1/src/cminusc/main.cpp"
+},
+{
+  "directory": "/home/david/compiler_cminus/lab3-1/build/src/cminusc",
+  "command": "/usr/bin/c++    -I/home/david/llvm-install/include -I/home/david/compiler_cminus/lab3-1/include -I/home/david/compiler_cminus/lab3-1/deps    -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -fno-rtti -std=gnu++14 -o CMakeFiles/cminusc.dir/cminus_builder.cpp.o -c /home/david/compiler_cminus/lab3-1/src/cminusc/cminus_builder.cpp",
+  "file": "/home/david/compiler_cminus/lab3-1/src/cminusc/cminus_builder.cpp"
+},
+{
+  "directory": "/home/david/compiler_cminus/lab3-1/build/tests",
+  "command": "/usr/bin/c++    -I/home/david/llvm-install/include -I/home/david/compiler_cminus/lab3-1/include -I/home/david/compiler_cminus/lab3-1/deps    -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -std=gnu++14 -o CMakeFiles/test_syntax_tree_cpp.dir/test_syntax_tree.cpp.o -c /home/david/compiler_cminus/lab3-1/tests/test_syntax_tree.cpp",
+  "file": "/home/david/compiler_cminus/lab3-1/tests/test_syntax_tree.cpp"
+}
+]
