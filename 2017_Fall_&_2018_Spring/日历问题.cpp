@@ -1,0 +1,57 @@
+#include<stdio.h>
+int main()
+{
+	int a,b,c,d,n1,n2,delta;
+    scanf("%d %d %d %d",&a,&b,&c,&d);
+    if(a==1)
+    n1=b;
+    if(a==2)
+    n1=31+b;
+    if(a==3)
+    n1=59+b;
+    if(a==4)
+    n1=90+b;
+    if(a==5)
+    n1=120+b;
+    if(a==6)
+    n1=151+b;
+    if(a==7)
+    n1=181+b;
+    if(a==8)
+    n1=212+b;
+    if(a==9)
+    n1=243+b;
+    if(a==10)
+    n1=273+b;
+    if(a==11)
+    n1=304+b;
+    if(a==12)
+    n1=334+b;
+    if(c==1)
+    n2=d;
+    if(c==2)
+    n2=31+d;
+    if(c==3)
+    n2=59+d;
+    if(c==4)
+    n2=90+d;
+    if(c==5)
+    n2=120+d;
+    if(c==6)
+    n2=151+d;
+    if(c==7)
+    n2=181+d;
+    if(c==8)
+    n2=212+d;
+    if(c==9)
+    n2=243+d;
+    if(c==10)
+    n2=273+d;
+    if(c==11)
+    n2=304+d;
+    if(c==12)
+    n2=334+d;
+    delta=n2-n1;
+    printf("%d",delta);
+    return 0;
+}
