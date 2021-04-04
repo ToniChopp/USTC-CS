@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/COD实验/lab2/lab2_1/lab2_1.srcs/sources_1/new/sorter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sorter
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/COD实验/lab2/lab2_1/lab2_1.srcs/sim_1/new/sorter_test.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sorter_test
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/COD实验/lab2/lab2_1/lab2_1.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
