@@ -1,0 +1,226 @@
+.model small
+
+.data
+    input_buffer db 100 ,? ,100 dup(?)
+    position dw 0
+    len db 00h
+    prevop db 00h
+    result dw 0
+
+.stack 40960
+
+.code
+
+getline proc         ;获取输入内容
+    push ax
+    push bx
+    push cx
+    push dx
+    push si
+    push di
+
+    lea dx,input_buffer        
+    mov ah,0ah
+    int 21h
+
+    pop di
+    pop si
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+getline endp
+
+calculate proc
+    push ax
+    push bx
+    push cx
+    push dx
+    push si
+    push di
+
+    mov di,word ptr position  ;记录位置的计数器
+    mov cl,byte ptr len	     ;记录长度
+    mov ch,00h
+    mov ax,0
+
+    .while di < cx
+        mov dl,input_buffer[di+2]
+        .if dl>='0' && dl<='9'      ;读取的是数字
+            sub dl,30h
+            mov dh,00h
+            mov bl,10
+            mul bl
+            add ax,dx
+        .elseif dl=='+' || dl=='-'   ;读取的是操作符
+            mov bl,prevop
+            .if bl=='+'              ;执行加法操作
+                mov bx,word ptr result
+                add ax,bx
+                mov word ptr result,ax
+            .elseif bl=='-'
+                mov bx,word ptr result
+                sub bx,ax
+                mov word ptr result,bx
+            .else
+                mov word ptr result,ax
+            .endif
+            mov prevop,dl
+            mov ax,0
+        .elseif dl=='('             ;左括号，更新位置指针
+            add di,1h
+            mov word ptr position,di
+
+            mov bl,prevop           ;优先计算括号中内容，将之前的计算结果全压到栈里
+            mov bh,0
+            push bx
+            mov byte ptr prevop,0
+
+            mov bx,word ptr result 
+            push bx
+            mov word ptr result,0
+
+            call calculate          ;递归调用计算括号中的计算结果
+
+            mov ax,word ptr result
+
+            pop bx                  ;出栈之前结果
+            mov word ptr result, bx
+
+            pop bx
+            mov byte ptr prevop, bl
+
+            mov di,word ptr position
+
+        .elseif dl==')'
+            mov bl,prevop
+            .if bl=='+'                     ;括号外做合并计算
+                mov bx, word ptr result
+                add ax, bx
+                mov word ptr result, ax
+            .elseif bl=='-'
+                mov bx, word ptr result
+                sub bx, ax
+                mov word ptr result, bx
+            .else
+                mov word ptr result, ax
+            .endif
+            jmp return
+        .endif
+        add di,1
+        mov word ptr position,di
+    .endw
+
+    .if di==cx             ;字符串遍历完毕，计算结束
+        mov cl, prevop
+        .if cl == '+'
+            mov bx, word ptr result
+            add ax, bx
+            mov word ptr result, ax
+        .elseif cl == '-'
+            mov bx, word ptr result
+            sub bx, ax
+            mov word ptr result, bx
+        .else
+            mov word ptr result, ax
+        .endif
+    .endif
+
+return:
+    pop di
+    pop si
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+calculate endp
+
+printnumber proc
+    push ax
+    push bx
+    push cx
+    push dx
+    push si
+    push di
+
+    mov dl, 10
+    call printchar
+
+    .if sword ptr ax < 0       ;对于负数，打印负号
+        mov dl, '-'
+        call printchar
+        neg ax
+    .endif
+
+    mov cx, 0
+    mov bl, 10
+    div bl
+    mov dh, 00h
+    mov dl, ah
+    push dx
+    inc cx
+
+    .while al != 0         ;把计算结果的十进制整数分解为单个数字字符
+        mov ah, 00h
+        mov bl, 10
+        div bl
+        mov dh, 00h
+        mov dl, ah
+        push dx
+        inc cx
+    .endw
+
+    .while cx > 0          ;返回ASCII码
+        pop dx
+        add dx, 30h
+        call printchar
+        dec cx
+    .endw
+
+    pop di
+    pop si
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+printnumber endp
+
+printchar proc      ;打印字符串
+    push ax
+    push bx
+    push cx
+    push dx
+    push si
+    push di
+
+    mov ah, 02h
+    int 21h
+
+    pop di
+    pop si
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+printchar endp
+
+
+.startup
+
+    call getline
+
+    ; cx is count, dx is buffer, ax is value
+    mov al, input_buffer[1]
+    mov len, al
+
+    call calculate
+
+    mov ax, word ptr result
+    call printnumber
+
+.exit
+end

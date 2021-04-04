@@ -1,0 +1,1 @@
+/usr/bin/cc   -std=c99  -O0 -Wall -g2 -ggdb   CMakeFiles/c-c.dir/cminus_compiler.c.o  -o c-c -rdynamic lib/liblex.a lib/libsyntax.a lib/liblex.a lib/libcommon.a lib/libsyntax_tree.a 

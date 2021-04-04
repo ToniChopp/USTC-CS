@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/test_syntax_tree_cpp.dir/test_syntax_tree.cpp.o  -o ../test_syntax_tree_cpp -rdynamic ../deps/analyzer/liblex.a ../deps/analyzer/libsyntax.a ../libsyntax_tree_cpp.a ../deps/syntax_tree/libsyntax_tree.a ../deps/analyzer/liblex.a 

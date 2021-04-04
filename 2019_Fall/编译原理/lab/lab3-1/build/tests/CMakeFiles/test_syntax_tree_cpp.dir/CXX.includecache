@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../deps/analyzer/syntax_analyzer.tab.h
+
+../deps/syntax_tree/SyntaxTree.h
+stdio.h
+-
+
+../include/syntax_tree.hpp
+syntax_tree/SyntaxTree.h
+../include/syntax_tree/SyntaxTree.h
+analyzer/syntax_analyzer.tab.h
+../include/analyzer/syntax_analyzer.tab.h
+vector
+-
+memory
+-
+
+/home/david/compiler_cminus/lab3-1/tests/test_syntax_tree.cpp
+syntax_tree.hpp
+/home/david/compiler_cminus/lab3-1/tests/syntax_tree.hpp
+

@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "compilerPath": "F:/mingw64/bin/gcc.exe",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "F:\\mingw64\\bin"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "intelliSenseMode": "msvc-x64"
+        }
+    ],
+    "version": 4
+}

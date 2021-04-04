@@ -1,0 +1,35 @@
+void swap(int a,int b,int tmp)
+{
+    if(a>b)
+    {
+        tmp=a;
+        a=b;
+        b=tmp;
+    }
+}
+void Sorting(int a,int b,int c,int d,int e,int tmp)  /* Sorting for a bunch of numbers  
+test the comment !*/{
+                      /* Sorting,order: from the smallest one to the biggest one */
+    swap(a,b,tmp);
+    swap(a,c,tmp);
+    swap(a,d,tmp);
+    swap(a,e,tmp);
+    swap(b,c,tmp);
+    swap(b,d,tmp);
+    swap(b,e,tmp); 
+    swap(c,d,tmp);
+    swap(c,e,tmp);
+    swap(d,e,tmp);
+}
+
+int main(void)
+{
+    int tmp; int a; int b; int c; int d; int e;
+    a=5;
+    b=2;
+    c=1;
+    d=8;
+    e=6;
+    Sorting(a,b,c,d,e,tmp);
+    return 0;
+}
