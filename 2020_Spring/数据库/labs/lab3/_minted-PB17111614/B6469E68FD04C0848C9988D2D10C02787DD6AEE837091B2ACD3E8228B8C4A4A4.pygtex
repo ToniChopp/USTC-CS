@@ -1,0 +1,29 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{elif} \PYG{n}{args}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}tab\PYGZsq{}}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{:}
+\PYG{n}{queries} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+\PYG{n}{convert\PYGZus{}dict}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]:} \PYG{n}{args}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]}
+\PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n}{convert\PYGZus{}dict} \PYG{k}{if} \PYG{n}{args}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{!=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+\PYG{o+ow}{and} \PYG{o+ow}{not} \PYG{n}{k}\PYG{o}{.}\PYG{n}{startswith}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}m\PYGZus{}\PYGZsq{}}\PYG{p}{)} \PYG{o+ow}{and} \PYG{o+ow}{not} \PYG{n}{k}\PYG{o}{.}\PYG{n}{startswith}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}tab\PYGZsq{}}\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+\PYG{n}{customers} \PYG{o}{=} \PYG{n}{Customer}\PYG{o}{.}\PYG{n}{query}\PYG{o}{.}\PYG{n}{filter\PYGZus{}by}\PYG{p}{(}\PYG{o}{**}\PYG{n}{queries}\PYG{p}{)}\PYG{o}{.}\PYG{n}{all}\PYG{p}{()}
+\PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{customers}\PYG{p}{)} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+\PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}status\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{k+kc}{False}
+\PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}message\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}没有查找到待删除内容\PYGZsq{}}
+\PYG{k}{if} \PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}status\PYGZsq{}}\PYG{p}{]:}
+\PYG{k}{for} \PYG{n}{c} \PYG{o+ow}{in} \PYG{n}{customers}\PYG{p}{:}
+\PYG{n}{car\PYGZus{}account} \PYG{o}{=} \PYG{n}{CheckingAccountRecord}\PYG{o}{.}\PYG{n}{query}\PYG{o}{.}\PYG{n}{filter\PYGZus{}by}\PYG{p}{(}
+\PYG{n}{car\PYGZus{}c\PYGZus{}identity\PYGZus{}code}\PYG{o}{=}\PYG{n}{c}\PYG{o}{.}\PYG{n}{c\PYGZus{}identity\PYGZus{}code}\PYG{p}{)}\PYG{o}{.}\PYG{n}{first}\PYG{p}{()}
+\PYG{n}{sar\PYGZus{}account} \PYG{o}{=} \PYG{n}{SavingsAccountRecord}\PYG{o}{.}\PYG{n}{query}\PYG{o}{.}\PYG{n}{filter\PYGZus{}by}\PYG{p}{(}
+\PYG{n}{sar\PYGZus{}c\PYGZus{}identity\PYGZus{}code}\PYG{o}{=}\PYG{n}{c}\PYG{o}{.}\PYG{n}{c\PYGZus{}identity\PYGZus{}code}\PYG{p}{)}\PYG{o}{.}\PYG{n}{first}\PYG{p}{()}
+\PYG{n}{customer\PYGZus{}loan} \PYG{o}{=} \PYG{n}{LoanCustomer}\PYG{o}{.}\PYG{n}{query}\PYG{o}{.}\PYG{n}{filter\PYGZus{}by}\PYG{p}{(}
+\PYG{n}{lc\PYGZus{}c\PYGZus{}identity\PYGZus{}code}\PYG{o}{=}\PYG{n}{c}\PYG{o}{.}\PYG{n}{c\PYGZus{}identity\PYGZus{}code}\PYG{p}{)}\PYG{o}{.}\PYG{n}{first}\PYG{p}{()}
+\PYG{k}{if} \PYG{n}{car\PYGZus{}account} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{k+kc}{None} \PYG{o+ow}{or} \PYG{n}{sar\PYGZus{}account} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{k+kc}{None} \PYG{o+ow}{or} \PYG{n}{customer\PYGZus{}loan} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{k+kc}{None}\PYG{p}{:}
+\PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}status\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{k+kc}{False}
+\PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}message\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}客户不可删除\PYGZsq{}}
+\PYG{k}{if} \PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}status\PYGZsq{}}\PYG{p}{]:}
+\PYG{n}{customers\PYGZus{}num} \PYG{o}{=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{customers}\PYG{p}{)}
+\PYG{k}{for} \PYG{n}{c} \PYG{o+ow}{in} \PYG{n}{customers}\PYG{p}{:}
+\PYG{n}{db}\PYG{o}{.}\PYG{n}{session}\PYG{o}{.}\PYG{n}{delete}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)}
+\PYG{n}{db}\PYG{o}{.}\PYG{n}{session}\PYG{o}{.}\PYG{n}{commit}\PYG{p}{()}
+\PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}message\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}删除成功\PYGZsq{}}
+\end{Verbatim}

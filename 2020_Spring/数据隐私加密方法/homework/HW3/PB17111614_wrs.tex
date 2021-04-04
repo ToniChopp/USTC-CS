@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\setmainfont{Microsoft YaHei}
+\usepackage{geometry}
+\setlength{\parindent}{0pt}   %控制缩进
+\usepackage{ctex}
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage{mathrsfs}
+\title{数据隐私加密方法 HW3}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\section*{1.}
+	"alpha"转化为二进制:0110000101101100011100000110100001100001\\
+	"bravo"转化为二进制:0110001001110010011000010111011001101111\\
+	"delta"转化为二进制:0110010001100101011011000111010001100001\\
+	"gamma"转化为二进制:0110011101100001011011010110110101100001\\
+	由此可判断出: $c_{1}$是由 "alpha" 加密而来， $c_{2}$由"bravo"加密而来，按位异或后求得k:
+	$$k=1001100000010101101111000111111111100111‬$$
+	\section*{2.}
+	令 $m_{L}=\{0\}^{\lambda}$,$m_{R}=\{1\}^{\lambda}$，这样左边得到的c为k本身，右边得到的c为k按位取反。所以不可以互换
+	\section*{3.}
+	$\frac{1}{2^{\frac{\lambda}{2}}},\frac{1}{\lambda^{log\lambda}},\frac{1}{2^{(log\lambda)^2}},\frac{1}{2^{\sqrt{\lambda}}}$,这些函数与$\lambda^{c}$相乘，当$\lambda \rightarrow \infty$时，积趋近于0
+	\section*{4.}
+	\subsection*{a.}
+	用$\mathcal{A}$来验证$\mathcal{L}_{prg-real}^{G}$时，当且仅当遍历到$s'$与$s$完全一致时，才会返回1。但验证$\mathcal{L}_{prg-rand}^{G}$时可能找不到，返回0。所以是可以区分的，非 negligible。
+	\subsection*{b.}
+	不违背，通过G生成的长度为$\lambda+l$的伪随机数依然是均匀分布中不可区分的，没有违背prg的定义。
+	\section*{5.}
+	\subsection*{a.}
+	$p=101,q=73,n=p\times q=7373$\\
+	$\Phi(n)=(p-1)\times(q-1)=7200$\\
+	此时选取e使得$1<e<\Phi(n)$，且$e$与$\Phi(n)$互质。则e共有1919个，所以由$(n,e)$组成的公钥共有1919个
+	\subsection*{b.}
+	$c=M^{e}modN$所以当$M=2008,e=91,N=7373$时，密文$c=2008^{91}mod\ 7373=2957$
+	\subsection*{c.}
+	先计算私钥,$ed=1mod\ \Phi(n)$,所以$d=2661$\\
+	解密：$M=2957^{2661}mod\ 7373=2008$
+	\section*{6.}
+	$\Phi(N)=(p-1)\times(q-1),N=p\times q$，所以$\Phi(N)=p\times q-p-q+1=N-(p+q)+1$。所以可得到方程组:
+	$$p\times q = N$$
+	$$p+q = p\times q-\Phi(N)+1$$
+	整理得$p^2-(N-\Phi(N)+1)p+N=0$
+	这个二次方程可以在多项式时间内求解。
+\end{document}

@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\setmainfont{Microsoft YaHei}
+\usepackage{geometry}
+\usepackage{ctex}
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\title{Methodology, Ethics and Practice of
+	Data Privacy
+HW1}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\section*{1.}
+	\subsection*{(a.)}
+	\par{Age\qquad Gender\qquad Nationality\qquad Salary}
+	\subsection*{(b.)}
+	\includegraphics*[scale=0.75]{2.png}
+	\par{对于Age:\quad $t[17-26]=\frac{5-1}{10-1}=\frac{4}{9}$ \
+		 $t[27-36]=\frac{1}{3} $ \
+	 	 $t[37-120]=\frac{3}{82}$}	
+ 	 \par{对于Salary:\quad $t[16K-30K]=\frac{4}{15K}
+ 	 	t[30k-40k]=\frac{3}{10K}$
+  	设Salry最大值为70K，$t[40k-70k]=\frac{3}{30K}$}
+	\subsection*{(c.)}
+	\par{设数据共有n个元组，首先将待泛化的属性值进行排序，然后从K=2开始选择K匿名的K值，并进行泛化操作，若泛化结果失败则K+1直到$\frac{n}{2}$，当泛化成功时记录LM的值，并利用深度优先搜索的思想在K不变的情况下继续搜索有没有不同的泛化方法同样记录LM的值，如果得到更优的则做替换，否则K+1重复循环，直到$\frac{n}{2}$为止。}
+	\section*{2.}
+	\subsection*{(a.)}
+	令$Y=R_{i}(x)$\\
+	 \par{当$X=0$时，对于$R_{1}(X)$，先验概率：$P=0.01$，后验概率：$P(X=0|Y)=\frac{P(X=0)P(Y|X=0)}{P(X=0)P(Y|X=0)+P(X=0)P(Y|X\neq 0)}=0.2+0.8*\frac{1}{1001}$对于$R_{2}(x)$，先验概率$P=0.01$，后验概率：$P(X=0|Y)=\frac{P(X=0)P(Y|X=0)}{P(X=0)P(Y|X=0)+P(X=0)P(Y|X\neq 0)}=\frac{1}{201}$。对于$R_{3}(x)$，先验概率$P=0.01$，后验概率：$P(X=0|Y)=\frac{P(X=0)P(Y|X=0)}{P(X=0)P(Y|X=0)+P(X=0)P(Y|X\neq 0)}=0.5*(\frac{1}{201}+\frac{1}{1001})$。}
+	 \par{当$X\in [200,800]$，先验概率：$P=0.59499$对于3种方法都成立，后验概率：$P(X\in [200,800]|Y)=\frac{P(X\in [200,800])P(Y|X\in [200,800])}{P(X\in [200,800])P(Y|X\in [200,800])+P(X\notin [200,800])P(Y|X\in [200,800])}$。带入得：$R_{1}(x)$的后验概率为：$P=0.83$,$R_{2}(x)$的后验概率为：$P=1 $，$R_{3}(x)$的后验概率为$P=0.708$}
+	 \subsection*{(b.)}
+	 \par{$R_{3}$最好，因为根据先验概率和后验概率的计算发现第三种方法最小概率揭露了实际信息。}
+	\section*{3.}
+	\par{证明：反证法，如果允许$(\alpha,\beta)$隐私侵犯，则必须要满足(2)(3)两项不等式。但由于(4)式中对于$\gamma -amplifying$的定义，$\frac{p(R(u_{1})=v)}{p(R(u_{2})=v)}\le \gamma \le \frac{\beta (1-\alpha)}{\alpha (1-\beta)}$，再由贝叶斯公式，可计算发现与(2)(3)两式矛盾，所以原命题成立。}
+	
+\end{document}

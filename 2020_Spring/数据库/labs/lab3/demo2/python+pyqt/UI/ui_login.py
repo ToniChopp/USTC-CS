@@ -1,0 +1,90 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'login.ui'
+#
+# Created by: PyQt5 UI code generator 5.11.3
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+class Ui_LoginDialog(object):
+    def setupUi(self, LoginDialog):
+        LoginDialog.setObjectName("LoginDialog")
+        LoginDialog.resize(400, 240)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(LoginDialog.sizePolicy().hasHeightForWidth())
+        LoginDialog.setSizePolicy(sizePolicy)
+        LoginDialog.setMaximumSize(QtCore.QSize(400, 240))
+        self.gridLayout = QtWidgets.QGridLayout(LoginDialog)
+        self.gridLayout.setObjectName("gridLayout")
+        self.label = QtWidgets.QLabel(LoginDialog)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
+        self.ipaddr = QtWidgets.QLineEdit(LoginDialog)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.ipaddr.setFont(font)
+        self.ipaddr.setObjectName("ipaddr")
+        self.gridLayout.addWidget(self.ipaddr, 0, 1, 1, 1)
+        self.label_2 = QtWidgets.QLabel(LoginDialog)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName("label_2")
+        self.gridLayout.addWidget(self.label_2, 1, 0, 1, 1)
+        self.database = QtWidgets.QLineEdit(LoginDialog)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.database.setFont(font)
+        self.database.setObjectName("database")
+        self.gridLayout.addWidget(self.database, 1, 1, 1, 1)
+        self.label_3 = QtWidgets.QLabel(LoginDialog)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_3.setFont(font)
+        self.label_3.setObjectName("label_3")
+        self.gridLayout.addWidget(self.label_3, 2, 0, 1, 1)
+        self.username = QtWidgets.QLineEdit(LoginDialog)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.username.setFont(font)
+        self.username.setObjectName("username")
+        self.gridLayout.addWidget(self.username, 2, 1, 1, 1)
+        self.label_4 = QtWidgets.QLabel(LoginDialog)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_4.setFont(font)
+        self.label_4.setObjectName("label_4")
+        self.gridLayout.addWidget(self.label_4, 3, 0, 1, 1)
+        self.password = QtWidgets.QLineEdit(LoginDialog)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.password.setFont(font)
+        self.password.setObjectName("password")
+        self.gridLayout.addWidget(self.password, 3, 1, 1, 1)
+        self.LoginBtn = QtWidgets.QPushButton(LoginDialog)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.LoginBtn.setFont(font)
+        self.LoginBtn.setAutoFillBackground(True)
+        self.LoginBtn.setObjectName("LoginBtn")
+        self.gridLayout.addWidget(self.LoginBtn, 4, 1, 1, 1)
+
+        self.retranslateUi(LoginDialog)
+        QtCore.QMetaObject.connectSlotsByName(LoginDialog)
+
+    def retranslateUi(self, LoginDialog):
+        _translate = QtCore.QCoreApplication.translate
+        LoginDialog.setWindowTitle(_translate("LoginDialog", "LOGIN IN"))
+        self.label.setText(_translate("LoginDialog", "Server Address:"))
+        self.label_2.setText(_translate("LoginDialog", "Database Name:"))
+        self.label_3.setText(_translate("LoginDialog", "Username："))
+        self.label_4.setText(_translate("LoginDialog", "Password："))
+        self.LoginBtn.setText(_translate("LoginDialog", "Login"))
+

@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\setmainfont{Microsoft YaHei}
+\usepackage{geometry}
+%\setlength{\parindent}{0pt}   %控制缩进
+\usepackage{ctex}
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\title{数据库 	HW8}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\section*{1.}
+	以两个并发事务$T_{1},T_{2}$为例，多个并发事务时同理。当出现以下两种情况时，不可串行化：\\
+	\\
+	(1)事务$T_{1}$ 写某个数据对象 A ，$T_{2}$读或写 A;\\
+	(2)\ $T_{1}$ 读某个数据对象 A ，$T_{2}$写 A;\\
+	\par{设$T_{1},T_{2}$的潜在冲突公共对象为${A_{1},A_{2},...,A_{n}}$，其中$X=\{A_{1},...A_{j}\}$符合(1)，$Y=\{A_{j+1},...,A_{n}\}$符合(2)。所以此时$T_{1}$需要用X锁$①$，而$T_{2}$用S锁或X锁$②$。假设$①$先执行，则$T_{1}$获得锁，$T_{2}$等待。由2PL，$T_{1}$在全部获得X与Y中的对象的锁后才会开始释放锁。如果此时对于$A_{i},1\le i\le n$，$T_{2}$获得了$A_{i}$的锁，则会发生死锁。否则只有当$T_{1}$全部执行完了对于X,Y的事务才会释放锁，让等待的$T_{2}$开始执行。这使得$T_{1},T_{2}$可以顺序串行执行，则$T_{1},T_{2}$的调度是冲突可串的，因而是可串化调度。对于先执行$②$同理可证。因此若并发事务遵循2PL，在不发生死锁的情况下，对这些事务的并发调度一定是可串行化的调度。}
+	\section*{2.}
+	假设两个事物$T_{1},T_{2}$，对于一个数据对象A，$T_{1}$取得了S锁，$T_{2}$取得了U锁，则$T_{1}$只读A，$T_{2}$拿到了U锁可以升级到X锁对A做写操作，这样有良好的并发性。而当$T_{1}$取得了A的U锁时，若此时$T_{2}$取得A的S锁，则会导致$T_{1}$永远没法升级到X锁，无法对A进行写操作。这在DBMS中是无效的，所以为了避免这种情况，DBMS设计了不对称的锁相容规则，旨在提高并发性且可以正常对数据库进行事务操作。
+	\section*{3.}
+	对于普通2PL会，例如:\\
+	\begin{center}
+		\begin{tabular}{|c | c | c|}
+			t & $T_{1}$ & $T_{2}$ \cr \hline
+			1& xL1(A) & \cr \hline
+			2& A=A-100 &  \cr \hline
+			3& xL1(B) & \cr \hline
+			4& Write(A) & \cr \hline
+			5 &xL1(B) & \cr \hline
+			6 &Unlock(A) & \cr \hline
+			7 & &sL2(A)  \cr \hline
+			8 &B=B+100 & Read(A)  \cr \hline
+			9 &Write(B) & \cr \hline
+			10& Unlock(B) & \cr \hline
+			11 &Rollback & \cr \hline
+		\end{tabular}
+	\end{center}
+	满足2PL，但由于最后$T_{1}$\ Rollback，导致$T_{2}$对A的Read是脏读\\
+	\par{但对于严格2PL，X锁会保持到事务结束，当$T_{1}$对事务A持有X锁时，$T_{2}$不能持有A的任何锁，所以此时不会出现脏读，强2PL同理不会出现脏读。}
+	\section*{4.}
+	对于给定的操作串，其优先图如下:\\
+	\includegraphics*[scale = 0.16]{1.jpg}\\
+	由于优先图中有环，所以是不可串。
+	\section*{5.}
+	\begin{center}
+		\begin{tabular}{|c | c | c| c | c |}
+			\hline
+			t & $T_{1}$ & $T_{2}$ & $T_{3}$ & $T_{4}$\cr \hline
+			1&  & & xL3(x) &  \cr \hline
+			2&  & & write(x) & xL4(y) \cr \hline
+			3& xL1(z) & & & write(y) \cr \hline
+			4& write(z)& & xL3(a) & u4(y) \cr \hline
+			5 & & & write(a) & \cr \hline
+			6 & & & xL3(y) & \cr \hline
+			7 & & & write(y) &  \cr \hline
+			8 & & xL2(a) & write(x) & \cr \hline
+			9 & & wait & write(y) & \cr \hline
+			10& & wait & u3(x) & \cr \hline
+			11 & xL1(a) & wait & u3(a) & \cr \hline
+			12 & wait & write(a) & u3(y) & \cr \hline
+			13 & wait & xL2(z) & write(y) & \cr \hline
+			14 & xL1(z) & wait & & \cr \hline
+			15 & wait & wait & & \cr \hline
+			16 & wait  & wait & & \cr \hline
+		\end{tabular}
+	\end{center}
+	这时根据2PL，$T_{1}$等待$T_{2}$持有的a的锁，而$T_{2}$等待$T_{1}$持有的z的锁，出现了死锁情况，所以不能用用2PL调度器生成并发调度。
+\end{document}

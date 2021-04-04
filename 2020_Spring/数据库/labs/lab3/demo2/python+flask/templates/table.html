@@ -1,0 +1,35 @@
+<!doctype html>
+<title>Tables</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<section class="content">
+  <header>
+    <h1 style="text-align:center;">All Tables in Database - {{ dbname }}</h1>
+  </header>
+
+  <table>
+    <thead>
+        <tr>
+            <th style="width: 50%"> Table Name </th>
+            <th style="width: 50%"> Row Count</th>
+        </tr>
+    </thead>
+    <tbody>
+		{% for row in rows %}
+		<tr>
+			<td style="width: 50%"> {{ row[0]  }}</td>
+			<td style="width: 50%"> {{ row[1] }}</td>
+		<tr>
+		{% endfor %}
+	</tbody>
+  </table>
+
+  <form method="post" id="table"> 
+    <div>
+      <input id = "searchBtn" type="submit" name = "search" value="search"> 
+      <input id = "clearBtn" type="submit" name = "clear" value="clear" > 
+    </div>
+    
+  </form>
+</section>

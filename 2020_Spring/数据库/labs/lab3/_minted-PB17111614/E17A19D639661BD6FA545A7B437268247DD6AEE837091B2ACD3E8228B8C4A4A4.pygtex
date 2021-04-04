@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{api}\PYG{o}{.}\PYG{n}{add\PYGZus{}resource}\PYG{p}{(}\PYG{n}{BusinessStatistic}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}/api/business\PYGZhy{}statistic\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{api}\PYG{o}{.}\PYG{n}{add\PYGZus{}resource}\PYG{p}{(}\PYG{n}{CustomerManagement}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}/api/customer\PYGZhy{}management\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{api}\PYG{o}{.}\PYG{n}{add\PYGZus{}resource}\PYG{p}{(}\PYG{n}{AccountManagement}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}/api/account\PYGZhy{}management\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{api}\PYG{o}{.}\PYG{n}{add\PYGZus{}resource}\PYG{p}{(}\PYG{n}{LoanManagement}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}/api/loan\PYGZhy{}management\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}

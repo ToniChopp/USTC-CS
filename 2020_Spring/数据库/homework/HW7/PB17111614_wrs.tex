@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\setmainfont{Microsoft YaHei}
+\usepackage{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{ctex}
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\title{Database HW7}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\section*{1.什么是事务的 ACID 性质？请给出违背事务 ACID 性质的具体例子，每个性质举一个例子。}
+	ACID性质是事务的四种性质的首字母缩写，分别是原子性、一致性、隔离性、持久性。\\
+	原子性：事务是不可分的原子，其中的操作要么都做，要么都不
+	做。例：银行转账，A转账200元给B，可以分为三个操作，检查A账户余额高于200、A账户余额减去200、B账户余额加上200。这三个操作要么都做完，要么全部不做回滚。\\
+	一致性：事务的执行保证数据库从一个一致状态转到另一个一致
+	状态。例：依然是上一个转账的例子，三个操作进行都结束了才会提交事务，如果在执行A账户余额减去200、B账户余额加上200之间系统崩溃中断了，A不会凭空损失200，因为事务最终没有提交，所有事务中所作的修改也不会保存到数据库中。\\
+	隔离性：多个事务一起执行时相互独立。例：当A给B转账200元这个事务在执行中时，还有C给A转账100元这个事务同时执行，这两个事务互不干扰，在事务提交前不会实际改变A账户余额。\\
+	持久性：事务一旦成功提交，就在数据库永久保存。例：转账这个事务在提交后，A账户余额减少200，B账户余额增加200已经完成且会永久保存，即使系统崩溃也不会改变。
+	\section*{2.如果一个存储过程A内部调用了另一个存储过程B，此时A和B是否都可以使用事务编程并保证事务的 ACID 性质？请解释你的理由}
+	不可以，存储过程中使用事务编程，要么事务提交，要么回滚。假设存储过程A中的事务编程需要存储过程B中事务提交后得到的一致状态结果，假设B中事务回滚，则A中事务的执行会受到影响。这时隔离性得不到保障，所以不可以
+	\section*{3.}
+	\subsection*{对于①:}
+	使用Undo/Redo机制\\
+	1.Undo列表：{T2,T3},Redo:{T1}\\
+	2.Undo\\
+	T3:E=50\\
+	T2:D=40\\
+	T2:C=30\\
+	3.Redo\\
+	T1:A=40\\
+	T1:B=60\\
+	T1:A=75\\
+	4.Write\ log\\
+	<Abort.T2>\\
+	<Abort.T3>\\
+	所以A=75,\ B=60,\ C=30,\ D=40,\ E=50,\ F=60,\ G=70
+	\subsection*{对于②:}
+	使用Undo/Redo机制\\
+	1.Undo列表：{T3},Redo:{T1,T2}\\
+	2.Undo\\
+	T3:E=50\\
+	3.Redo\\
+	T1:A=40\\
+	T1:B=60\\
+	T1:A=75\\
+	T2:C=50\\
+	T2:D=80\\
+	T2:D=65\\
+	T2:C=75\\
+	4.Write\ log\\
+	<Abort.T3>\\
+	所以A=75,\ B=60,\ C=75,\ D=65,\ E=50,\ F=60,\ G=70
+	\subsection*{对于③:}
+	使用Undo/Redo机制同时考虑检查点\\
+	1.Undo列表：{T4},Redo列表为空\\
+	2.Undo\\
+	T4:G=70\\
+	T4:F=60\\
+	3.Wirte\ log\\
+	<Abort T4>\\
+	所以A=75,\ B=60,\ C=75,\ D=65,\ E=90,\ F=60,\ G=70
+\end{document}

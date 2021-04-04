@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\setmainfont{Microsoft YaHei}
+\usepackage{geometry}
+\setlength{\parindent}{0pt}   %控制缩进
+\usepackage{ctex}
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\title{数据隐私加密方法与伦理实现 HW2}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\section*{1.}
+	\subsection*{1.1}
+	使用Laplace差分隐私，由于查询针对的是数据库中数据的前n项和，将前n项和与前n-1项和做减法就可以得到第n个数据的值。选择$(\epsilon,0)$差分隐私。
+	$$M_{L}(x,f(·),\epsilon) = f(x) + (Y_{1}+...+Y_{k})$$
+	所以对于给定的$\epsilon=0.1$，查询的$\Delta f=5$，所以$Y_{i}\ iid\ Lap(50)=\frac{1}{100}exp\{-\frac{|x|}{50}\}$
+	所以：
+	$$M_{L}(x,f(·),\epsilon)=\sum_{i=1}^{5}x_{i} + (Y_{1}+...+Y_{5})$$
+	其中$Y_{i}\ iid\ \frac{1}{100}exp\{-\frac{|x|}{50}\}$
+	\subsection*{1.2}
+	同样使用$(\epsilon,0)$差分隐私，用Laplace加噪音，由于$\epsilon=0.1$，$\Delta f=2$所以$Y_{i}\ iid\ Lap(20) = \frac{1}{40}exp\{-\frac{|x|}{20}\}$。\\
+	所以
+	$$M_{L}(x,f(·),\epsilon)=max_{i\in [1,5]}x_{i} + (Y_{1}+...+Y_{5})$$
+	其中$Y_{i}\ iid\ \frac{1}{40}exp\{-\frac{|x|}{20}\}$
+	\section*{2.}
+	\subsection*{2.1}
+	根据给定的条件：\\
+	\includegraphics*[scale = 1]{1.png}\\
+	可得$\Delta_{1}\le 2L\eta_{1}$当$1\le t< 1+m$时，$\Delta_{t}\le 2L\eta_{1}$，$\Delta_{1+m}\le 2L(\eta_{1}+\eta_{1+m})$以此类推可得，当T=km时：
+	$$\Delta_{T}\le Delta_{1+(k-1)m}\le 2L\sum_{j=0}^{k-1}\eta_{1+jm}$$
+	\subsection*{2.2}
+	根据给定的条件：\\
+	\includegraphics*[scale = 1]{2.png}\\
+	可得$\Delta_{1}\le 2L\eta$，当$1\le t< 1+m$时，$\Delta_{t}\le (1-n\gamma)^{t-1}2L\eta$。以此类推，可得当$T=km$时：
+	$$\Delta_{T}\le (1-n\gamma)Delta_{T-1}\le 2L\eta \sum_{j=0}^{k-1}(1-n\gamma)^{(k-j)m-1}$$
+	\section*{3.}
+	\subsection*{3.1}
+	根据定理：\\
+	\includegraphics*[scale = 0.6]{3.png}\\
+	SGD算法的更新操作，每个更新的数值都在[0,1]之间，令$c=\delta \epsilon$，可得每次更新都是$(\epsilon,\delta)-DP$
+	\subsection*{3.2}
+	根据composition theorem，由于T=10000,所以对于每个DP来说，$(\epsilon,\delta)=(1.25\times 10^{-4},10^{-9})$。所以$\sigma \ge \sqrt{2ln(1.25\times 10^{9})/(1.25\times 10^{-4})^{2}}=51779.73$
+	\subsection*{3.3}
+	根据3.20，k=T=10000，$k\delta+\delta'= 0.10001$，$\epsilon'=\sqrt{2kln(\frac{1}{\delta'})\epsilon}+k\epsilon(e^{\epsilon}-1)=31369.21$
+	所以$\delta \ge \sqrt{2ln(1.25\times 10^{5})/31369.21^{2}}=50311.17$
+	\section*{4.}
+	\includegraphics*[scale = 0.8]{4.png}\\
+	所以$\sum_{x\in \hat{X}}x$的期望为$\frac{1}{1+e^{\epsilon}}(1-p)=\frac{1}{2+2e^{0.2}}$，$\sum_{x\in X}x$的期望为$\frac{1}{1+e^{\epsilon}}p=\frac{1}{2+2e^{0.2}}$\\
+	$p=0.1$时$\sum_{x\in \hat{X}}x$的期望为$\frac{1}{1+e^{\epsilon}}(1-p)=0.9\frac{1}{1+e^{0.2}}$，$\sum_{x\in X}x$的期望为$\frac{1}{1+e^{\epsilon}}p=0.1\frac{1}{1+1e^{0.2}}$\\
+	$p=0.9$时$\sum_{x\in \hat{X}}x$的期望为$\frac{1}{1+e^{\epsilon}}(1-p)=0.1\frac{1}{1+e^{0.2}}$，$\sum_{x\in X}x$的期望为$\frac{1}{1+e^{\epsilon}}p=0.9\frac{1}{1+1e^{0.2}}$\\
+	观察得：连个期望也符合参数为p的伯努利分布
+	\section*{5.}
+	\subsection*{5.1}
+	
+\end{document}

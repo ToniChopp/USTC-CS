@@ -1,0 +1,33 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if} \PYG{n}{args}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}tab\PYGZsq{}}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}0\PYGZsq{}}\PYG{p}{:}
+\PYG{k}{if} \PYG{n}{args}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}loan\PYGZus{}staff\PYGZus{}id\PYGZsq{}}\PYG{p}{]} \PYG{o}{!=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}} \PYG{o+ow}{and} \PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}status\PYGZsq{}}\PYG{p}{]:}
+\PYG{n}{staff} \PYG{o}{=} \PYG{n}{Staff}\PYG{o}{.}\PYG{n}{query}\PYG{o}{.}\PYG{n}{filter}\PYG{p}{(}
+\PYG{n}{Staff}\PYG{o}{.}\PYG{n}{s\PYGZus{}identity\PYGZus{}code} \PYG{o}{==} \PYG{n}{args}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}loan\PYGZus{}staff\PYGZus{}id\PYGZsq{}}\PYG{p}{])}\PYG{o}{.}\PYG{n}{first}\PYG{p}{()}
+\PYG{k}{if} \PYG{n}{staff} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:}
+\PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}status\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{k+kc}{False}
+\PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}message\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}员工不存在\PYGZsq{}}
+
+\PYG{k}{if} \PYG{n}{args}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}account\PYGZus{}staff\PYGZus{}id\PYGZsq{}}\PYG{p}{]} \PYG{o}{!=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}} \PYG{o+ow}{and} \PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}status\PYGZsq{}}\PYG{p}{]:}
+\PYG{n}{staff} \PYG{o}{=} \PYG{n}{Staff}\PYG{o}{.}\PYG{n}{query}\PYG{o}{.}\PYG{n}{filter}\PYG{p}{(}
+\PYG{n}{Staff}\PYG{o}{.}\PYG{n}{s\PYGZus{}identity\PYGZus{}code} \PYG{o}{==} \PYG{n}{args}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}account\PYGZus{}staff\PYGZus{}id\PYGZsq{}}\PYG{p}{])}\PYG{o}{.}\PYG{n}{first}\PYG{p}{()}
+\PYG{k}{if} \PYG{n}{staff} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:}
+\PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}status\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{k+kc}{False}
+\PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}message\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}员工不存在\PYGZsq{}}
+
+\PYG{k}{if} \PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}status\PYGZsq{}}\PYG{p}{]:}
+\PYG{n}{customer} \PYG{o}{=} \PYG{n}{Customer}\PYG{o}{.}\PYG{n}{query}\PYG{o}{.}\PYG{n}{filter}\PYG{p}{(}
+\PYG{n}{Customer}\PYG{o}{.}\PYG{n}{c\PYGZus{}identity\PYGZus{}code} \PYG{o}{==} \PYG{n}{args}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}customer\PYGZus{}id\PYGZsq{}}\PYG{p}{])}\PYG{o}{.}\PYG{n}{first}\PYG{p}{()}
+\PYG{k}{if} \PYG{n}{customer} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{k+kc}{None}\PYG{p}{:}
+\PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}status\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{k+kc}{False}
+\PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}message\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}客户 ID 已经存在\PYGZsq{}}
+
+\PYG{k}{if} \PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}status\PYGZsq{}}\PYG{p}{]:}
+\PYG{n}{init\PYGZus{}data} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+\PYG{n}{convert\PYGZus{}dict}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]:} \PYG{n}{args}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]}
+\PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n}{args} \PYG{k}{if} \PYG{n}{args}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{!=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}} \PYG{o+ow}{and} \PYG{o+ow}{not} \PYG{n}{k}\PYG{o}{.}\PYG{n}{startswith}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}m\PYGZus{}\PYGZsq{}}\PYG{p}{)}
+\PYG{o+ow}{and} \PYG{o+ow}{not} \PYG{n}{k}\PYG{o}{.}\PYG{n}{startswith}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}tab\PYGZsq{}}\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+\PYG{n}{db}\PYG{o}{.}\PYG{n}{session}\PYG{o}{.}\PYG{n}{add}\PYG{p}{(}\PYG{n}{Customer}\PYG{p}{(}\PYG{o}{**}\PYG{n}{init\PYGZus{}data}\PYG{p}{))}
+\PYG{n}{db}\PYG{o}{.}\PYG{n}{session}\PYG{o}{.}\PYG{n}{commit}\PYG{p}{()}
+\PYG{n}{result}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}message\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}插入成功\PYGZsq{}}
+\end{Verbatim}

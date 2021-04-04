@@ -1,0 +1,2 @@
+D:\并行计算\labs\Prime_MPI\x64\Debug\Dijkstra_MPI.exe
+D:\并行计算\labs\Prime_MPI\x64\Debug\Dijkstra_MPI.pdb

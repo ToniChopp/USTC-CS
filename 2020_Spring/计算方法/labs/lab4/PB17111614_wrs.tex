@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\setmainfont{Microsoft YaHei}
+\usepackage{geometry}
+\setlength{\parindent}{0pt}   %控制缩进
+\usepackage{ctex}
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\title{计算方法 Lab4}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\Large\section{实验结果：}
+	对于线性方程组 $Ax=b$，其中\\
+	\includegraphics*[scale = 0.35]{1.png}\\
+	\large\subsection*{(1).Jacobi迭代：}
+	当取初始迭代$x^{(0)}=\{0,0,...,0\}^{T}$，停止条件$||x^{(k+1)}-x^{(k)}||_{\infty}\le 10^{-5}$时：\\
+	程序部分运行结果如图:\\
+	\includegraphics*[scale = 0.5]{2.png}\\
+	根据给定的初始条件与停止条件，对于该线性方程组一共迭代了333次最终得出结果，该方程组的精确解为:\\
+	$$x=(10,18,24,28,30,30,28,24,18,10)^{T}$$
+	\large\subsection*{(1).Gauss-Seidel迭代：}
+	当取初始迭代$x^{(0)}=\{0,0,...,0\}^{T}$，停止条件$||x^{(k+1)}-x^{(k)}||_{\infty}\le 10^{-5}$时：\\
+	程序部分运行结果如图:\\
+	\includegraphics*[scale = 0.5]{3.png}\\
+	根据给定的初始条件与停止条件，对于该线性方程组一共迭代了175次最终得出结果，该方程组的精确解为:\\
+	$$x=(10,18,24,28,30,30,28,24,18,10)^{T}$$
+	\section{算法分析：}
+	本题分别使用C语言编写\ Jacobi\ 迭代和\ Gauss-Seidel\ 迭代的通用程序\\
+	对于\ Jacobi\ 迭代，使用分量形式的迭代公式:\\
+	\includegraphics*[scale = 0.5]{4.png}\\
+	作为程序编写的大体逻辑框架，使用三层循环来求解。设矩阵阶数为N，迭代次数为M，时间复杂度$O(MN^{2})$\\
+	对于\ Gauss-Seidel\ 迭代，同样使用分量形式的迭代公式:\\
+	\includegraphics*[scale = 0.6]{4.png}\\
+	作为程序编写的大体逻辑框架，同样使用三层循环来求解，只需对最内层循环稍加修改即可。设矩阵阶数为N，迭代次数为M，时间复杂度$O(MN^{2})$\\
+	\section{结果分析:}
+	两种迭代方式的最终结果：
+	$$x=(10,18,24,28,30,30,28,24,18,10)^{T}$$
+	结果是一样的，\ Jacobi\ 迭代的迭代次数为333次，而\ Gauss-Seidel\ 迭代的迭代次数只有175次，显然\ Gauss-Seidel\ 迭代的收敛速度更快。所以就运算而言，\ Gauss-Seidel\ 迭代更具有优势。
+	\section{实验小结：}
+	本次实验同样需要编写通用程序，不过程序代码框架较为简单，且两种迭代方式的代码只需要做轻微修改就可以实现。但对于迭代求解线性方程组的两种方法还是有了一定的深入认识。\ Gauss-Seidel\ 迭代运算优于\ Jacobi\ 迭代
+\end{document}

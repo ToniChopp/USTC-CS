@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\setmainfont{Microsoft YaHei}
+\usepackage{geometry}
+\setlength{\parindent}{0pt}   %控制缩进
+\usepackage{ctex}
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\title{计算方法 Lab5}
+\author{王嵘晟 \quad PB1711614}
+\date{}
+\begin{document}
+	\maketitle
+	\section{实验结果：}
+	对于$I(f)=\int_{0}^{8}sin(x)dx$,分别使用复化梯形公式和复化Simpson公式求数值积分，按照提议要求取$N=2^{k},\ k=\{1,2,...,10\}$个等距结点运算，结果如下：\\
+	\subsection*{复化梯形：}
+	程序运行结果截图：\\ 
+	\includegraphics*[scale = 0.8]{1.png}\\
+	 整理成表格后，结果如下：\\
+	 \makeatletter\def\@captype{table}\makeatother
+	 \large
+	 \caption{复化梯形公式运行结果}  
+	 \begin{center}  
+	 	\begin{tabular}{|c| c | c |}  
+	 		\hline
+	 		$k$ & 误差$e_{k}$ & 误差阶$d_{k}$ \cr \hline 
+	 		$0$ & $2.811932952685E+000$ &  \cr \hline
+	 		$1$ & $2.193993521794E+000$ & $0.358003$  \cr \hline
+	 		$2$ & $4.099829205476E-001$ & $2.419924$  \cr \hline
+	 		$3$ & $9.708816025468E-002$ & $2.078197$  \cr \hline
+	 		$4$ & $2.396461540682E-002$ & $2.018390$  \cr \hline
+	 		$5$ & $5.972370007437E-003$ & $2.004530$  \cr \hline
+	 		$6$ & $1.491925067877E-003$ & $2.001128$  \cr \hline
+	 		$7$ & $3.729084041566E-004$ & $2.000282$  \cr \hline
+	 		$8$ & $9.322254870159E-005$ & $2.000070$  \cr \hline
+	 		$9$ & $2.330535267947E-005$ & $2.000018$  \cr \hline
+	 		$10$ & $5.826320388591E-006$ & $2.000004$  \cr \hline
+	 	\end{tabular}  
+	 \end{center}
+ 	\subsection*{复化Simpson公式:}
+ 	程序运行结果截图：\\ 
+ 	\includegraphics*[scale = 0.8]{2.png}\\
+ 	整理成表格后，结果如下：\\
+ 	\makeatletter\def\@captype{table}\makeatother
+ 	\large
+ 	\caption{复化Simpson公式运行结果}  
+ 	\begin{center}  
+ 		\begin{tabular}{|c| c | c |}  
+ 			\hline
+ 			$k$ & 误差$e_{k}$ & 误差阶$d_{k}$ \cr \hline 
+ 			$0$ & $1.492788623854E+000$ &  \cr \hline
+ 			$1$ & $3.862635679953E+000$ & $-1.371576$  \cr \hline
+ 			$2$ & $1.846872798678E-001$ & $4.386429$  \cr \hline
+ 			$3$ & $7.210093176285E-003$ & $4.678923$  \cr \hline
+ 			$4$ & $4.098995424702E-004$ & $4.136676$  \cr \hline
+ 			$5$ & $2.504512568891E-005$ & $4.032669$  \cr \hline
+ 			$6$ & $1.556578642647E-006$ & $4.008079$  \cr \hline
+ 			$7$ & $9.715041660030E-008$ & $4.002014$  \cr \hline
+ 			$8$ & $6.069782898521E-009$ & $4.000503$  \cr \hline
+ 			$9$ & $3.793254599316E-010$ & $4.000137$  \cr \hline
+ 			$10$ & $2.370836860166E-011$ & $3.999968$  \cr \hline
+ 		\end{tabular}  
+ 	\end{center}
+	\section*{算法分析：}
+	使用C语言编程，分别用复化梯形公式$$I_{n}=h(\frac{1}{2}f(a)+\sum_{i=1}^{n-1}f(x_{i})+\frac{1}{2}f(b))$$
+	和复化Simpson公式
+	$$I_{n}=\frac{h}{3}(f(a)+4\sum_{i=0}^{m-1}f(x_{2i+1})+2\sum_{i=1}^{m-1}f(x_{2i})+f(b))$$
+	来计算$I(f)=\int_{0}^{8}sin(x)dx$，并由此得到计算误差。时间复杂度为$O(n)$，其中n为节点数量
+	\section*{结果分析：}
+	通过比较两种方法计算积分得到的误差$e_{k}$与误差阶$d_{k}$，可以发现：在节点数相同的情况下，使用复化Simpson公式计算积分的误差更小，但误差阶更大。这是因为随着节点数增加，复化Simpson公式计算的误差减小地更快。
+	\section*{实验小结：}
+	本次实验使用C语言编写了复化梯形公式和复化Simpson公式求积分的程序，通过比较结果的误差，可以发现当取相同数量的节点时，复化Simpson公式的误差更小，计算更精确。
+\end{document}

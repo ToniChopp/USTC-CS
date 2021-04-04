@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{app} \PYG{o}{=} \PYG{n}{Flask}\PYG{p}{(}\PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}}\PYG{p}{)}
+\PYG{n}{app}\PYG{o}{.}\PYG{n}{config}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}SQLALCHEMY\PYGZus{}DATABASE\PYGZus{}URI\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}mysql://david:1234@localhost/bank\PYGZdq{}}
+\PYG{n}{app}\PYG{o}{.}\PYG{n}{config}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}SQLALCHEMY\PYGZus{}TRACK\PYGZus{}MODIFICATIONS\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{k+kc}{False}
+\PYG{n}{db} \PYG{o}{=} \PYG{n}{SQLAlchemy}\PYG{p}{(}\PYG{n}{app}\PYG{p}{)}
+\end{Verbatim}

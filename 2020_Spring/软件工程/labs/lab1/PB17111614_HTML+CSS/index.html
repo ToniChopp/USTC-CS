@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+
+</head>
+<body>
+    <div class="whole">
+        <div class="header">
+            <span id="hourInput">
+                <input placeholder="0" type="text" id="hour" min="0" max="99">
+                <label id="hourDisplay">时</label>
+            </span>
+            <span id="minuteInput">
+                <input placeholder="0" type="text" id="minute" min="0" max="59">
+                <label id="minuteDisplay">分</label>
+            </span>
+            <span id="secondInput">
+                <input placeholder="0" type="text" id="second" min="0" max="59">
+                <label id="secondDisplay">秒</label>
+            </span>
+            <button type="button" id="btn1">开始正计时</button>
+            <button type="button" id="btn2">开始倒计时</button>
+        </div>
+        <div class="display">
+            <span id="Time">00:00:00</span>
+        </div>
+    </div>
+</body>
+</html>

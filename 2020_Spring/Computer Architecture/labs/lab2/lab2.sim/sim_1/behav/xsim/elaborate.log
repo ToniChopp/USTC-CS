@@ -1,0 +1,46 @@
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: F:/Xilinx/Vivado/2018.2/bin/unwrapped/win64.o/xelab.exe -wto bcb1a626c474413c8bb363bd03fe4e01 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot testBench_behav xil_defaultlib.testBench xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.NPC_Generator
+Compiling module xil_defaultlib.PC_IF
+Compiling module xil_defaultlib.PC_ID
+Compiling module xil_defaultlib.InstructionCache
+Compiling module xil_defaultlib.IR_ID
+Compiling module xil_defaultlib.CSR_EX
+Compiling module xil_defaultlib.RegisterFile
+Compiling module xil_defaultlib.ControllerDecoder
+Compiling module xil_defaultlib.ImmExtend
+Compiling module xil_defaultlib.PC_EX
+Compiling module xil_defaultlib.BR_Target_EX
+Compiling module xil_defaultlib.Op1_EX
+Compiling module xil_defaultlib.Op2_EX
+Compiling module xil_defaultlib.Reg2_EX
+Compiling module xil_defaultlib.Addr_EX
+Compiling module xil_defaultlib.Ctrl_EX
+Compiling module xil_defaultlib.CSR_Register
+Compiling module xil_defaultlib.ALU
+Compiling module xil_defaultlib.BranchDecision
+Compiling module xil_defaultlib.Result_MEM
+Compiling module xil_defaultlib.Reg2_MEM
+Compiling module xil_defaultlib.Addr_MEM
+Compiling module xil_defaultlib.Ctrl_MEM
+Compiling module xil_defaultlib.DataCache
+Compiling module xil_defaultlib.DataExtend
+Compiling module xil_defaultlib.WB_Data_WB
+Compiling module xil_defaultlib.Addr_WB
+Compiling module xil_defaultlib.Ctrl_WB
+Compiling module xil_defaultlib.HarzardUnit
+Compiling module xil_defaultlib.RV32ICore
+Compiling module xil_defaultlib.testBench
+WARNING: [XSIM 43-3373] "D:/Computer Architecture/labs/lab2/lab2.srcs/sim_1/imports/Simulation/testBench.v" Line 76. System function $fscanf is used as system task. This system function should have a LHS e.g. x=$fscanf().
+WARNING: [XSIM 43-3373] "D:/Computer Architecture/labs/lab2/lab2.srcs/sim_1/imports/Simulation/testBench.v" Line 90. System function $fscanf is used as system task. This system function should have a LHS e.g. x=$fscanf().
+WARNING: [XSIM 43-3373] "D:/Computer Architecture/labs/lab2/lab2.srcs/sim_1/imports/Simulation/testBench.v" Line 101. System function $fscanf is used as system task. This system function should have a LHS e.g. x=$fscanf().
+WARNING: [XSIM 43-3373] "D:/Computer Architecture/labs/lab2/lab2.srcs/sim_1/imports/Simulation/testBench.v" Line 115. System function $fscanf is used as system task. This system function should have a LHS e.g. x=$fscanf().
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot testBench_behav
